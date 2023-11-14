@@ -6,6 +6,7 @@ public class AnimationEventSenderScript : MonoBehaviour
 {
 
     private PlayerControllerScript _playerControllerScript;
+    public AttackScript _attackScript;
 
     private void Awake()
     {
@@ -15,5 +16,6 @@ public class AnimationEventSenderScript : MonoBehaviour
     void OnAttackEnd()
     {
         _playerControllerScript.canMove = true;
+        _attackScript.StopAttack();
     }
 }
