@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d871ea4a9c14e94da3d1bace3085255, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  maxHealth: {fileID: 11400000, guid: 56ebe441b7695334b8fa12f929b942cf, type: 2}
+  currentHealth: {fileID: 11400000, guid: ced3780f272459d48962fdedda20c01b, type: 2}
+  attackPower: {fileID: 11400000, guid: 6e828100702007a4abafef2cf02f2f8a, type: 2}
+  defense: {fileID: 11400000, guid: c624bbd0754084b468fceaf6a8114bb3, type: 2}
+  speed: {fileID: 11400000, guid: 65f73cee1c994fd48bf6fe0274d5efba, type: 2}
+  swordSpirits: {fileID: 11400000, guid: f6fba6e7e923c24428d346f1db9b3c07, type: 2}
+  shieldSpirits: {fileID: 11400000, guid: 6aa5342226085af45a536e423e7a56db, type: 2}
+  bowSpirits: {fileID: 11400000, guid: d21bb515acdd9f44086f6ce5f65677cb, type: 2}
+  staffSpirits: {fileID: 11400000, guid: f5e533d6ded2a294a973cbe5f75afb0d, type: 2}
