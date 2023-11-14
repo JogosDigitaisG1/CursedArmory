@@ -6,13 +6,23 @@ using UnityEngine.InputSystem;
 public class PlayerControllerScript : MonoBehaviour
 {
 
+    public enum LookDirection
+    {
+        Left, Right, Up, Down
+    }
+
+    private AttackScript attackScript;
+
+    private LookDirection lookDirection;
+
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     public float moveSpeed = 1f;
+
     public bool canMove = true;
 
-    private bool attacking = false;
+    
 
     public ContactFilter2D moveFilter;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -20,16 +30,17 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponentInChildren<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        attackScript = GetComponentInChildren<AttackScript>();
         print(rb);
     }
 
     void FixedUpdate()
     {
-        
-        if(moveInput != Vector2.zero && canMove)
+
+        if (canMove && moveInput != Vector2.zero)
         {
-           bool success =  TryMove(moveInput);
+            bool success = TryMove(moveInput);
 
             if (!success)
             {
@@ -43,9 +54,30 @@ public class PlayerControllerScript : MonoBehaviour
 
         }
 
-        
+        Direction();
+
+    }
+
+    private void Direction()
+    {
+        if (canMove && moveInput != Vector2.zero)
+        {
 
 
+            if (moveInput.x > 0)
+            {
+                lookDirection = LookDirection.Right;
+            }
+            else if (moveInput.x < 0)
+            {
+                lookDirection = LookDirection.Left;
+            }
+        }
+    }
+
+    public LookDirection GetDirection()
+    {
+        return lookDirection;
     }
 
     private bool TryMove(Vector2 direction)
@@ -63,6 +95,11 @@ public class PlayerControllerScript : MonoBehaviour
         }
     }
 
+    public void Attack()
+    {
+        attackScript.Attack(lookDirection);
+    }
+
     public Vector2 GetInput()
     {
         return moveInput;
@@ -75,7 +112,13 @@ public class PlayerControllerScript : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        attacking = value.isPressed;
+        if (!attackScript.IsAttacking())
+        {
+            Attack();
+        }
+        
+
+
     }
 
     void OnSpecial()
@@ -85,6 +128,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     public bool IsAttacking()
     {
-        return attacking;
+        return attackScript.IsAttacking();
     }
+
 }

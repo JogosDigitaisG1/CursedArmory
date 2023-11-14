@@ -6048,7 +6048,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10.59375
+  orthographic size: 10.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6388,7 +6388,7 @@ Transform:
   m_GameObject: {fileID: 1003112481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.74, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6438,7 +6438,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.73, y: -0.66}
+  m_Offset: {x: 0, y: -0.57}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6449,7 +6449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99, y: 1.39}
+  m_Size: {x: 1.09, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &1682199895
 GameObject:
@@ -6861,6 +6861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4920632576966167574, guid: 01455e9ae38e04344a89963369a3fbbc, type: 3}
+      propertyPath: _attackScript
+      value: 
+      objectReference: {fileID: 1003112483}
     - target: {fileID: 5099157270446011862, guid: 01455e9ae38e04344a89963369a3fbbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1

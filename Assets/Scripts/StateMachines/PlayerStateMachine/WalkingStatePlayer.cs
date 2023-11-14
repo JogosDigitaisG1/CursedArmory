@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerControllerScript;
 using static PlayerStateManager;
 
 public class WalkingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
@@ -50,13 +51,10 @@ public class WalkingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
             animator.SetFloat(PlayerCons.xMove, playerController.GetInput().x);
             animator.SetFloat(PlayerCons.yMove, playerController.GetInput().y);
 
-            Debug.Log("set floatx " + PlayerCons.xMove + " " + playerController.GetInput().x);
-            Debug.Log("set floaty " + PlayerCons.xMove + " " + playerController.GetInput().x);
-
-            if (playerController.GetInput().x > 0)
+            if (playerController.GetDirection() == LookDirection.Right)
             {
                 spriteRenderer.flipX = false;
-            }else if(playerController.GetInput().x < 0)
+            }else if(playerController.GetDirection() == LookDirection.Left)
             {
                 spriteRenderer.flipX = true;
             }

@@ -18,6 +18,9 @@ public class AttackingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
     {
         animator.Play(PlayerCons.attackAnim);
         playerController.canMove = false;
+        playerController.Attack();
+        
+
     }
 
     public override void ExitState()
