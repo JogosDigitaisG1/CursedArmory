@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
+using static PlayerControllerScript;
 using static PlayerStateManager;
 
 public class IdleStatePlayer : BaseState<PlayerStateManager.PlayerStates>
@@ -32,6 +33,7 @@ public class IdleStatePlayer : BaseState<PlayerStateManager.PlayerStates>
     public override PlayerStateManager.PlayerStates GetNextState()
     {
 
+
         if (playerController.IsAttacking())
         {
             return PlayerStates.Attack;
@@ -50,10 +52,26 @@ public class IdleStatePlayer : BaseState<PlayerStateManager.PlayerStates>
 
     public override void UpdateState()
     {
-
+        LooKDirection();
 
     }
 
+    private void LooKDirection()
+    {
 
+        //animator.SetFloat(PlayerCons.xMove, playerController.GetVectorDirectionNormalized().x);
+        //animator.SetFloat(PlayerCons.yMove, playerController.GetVectorDirectionNormalized().y);
 
+        animator.SetFloat(PlayerCons.lookAngle, playerController.GetAngle());
+
+        if (playerController.GetDirection() == LookDirection.Left)
+            {
+                spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+        
+    }
 }

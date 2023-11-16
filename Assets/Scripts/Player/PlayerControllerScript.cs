@@ -22,7 +22,9 @@ public class PlayerControllerScript : MonoBehaviour
 
     public bool canMove = true;
 
-    
+    private Vector3 mouseVector = Vector3.zero;
+
+    float anglePos = 0f;
 
     public ContactFilter2D moveFilter;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -54,26 +56,110 @@ public class PlayerControllerScript : MonoBehaviour
 
         }
 
-        Direction();
+        //Direction();
+
+        //mouseVector = GetMouseVector(transform);
+        //lookDirection = AngleToVectorDirection(transform);
+
+
+        anglePos = getMappedAngle();
+
+
+        //print("Mouse pos: " + AngleToVectorDirection(transform));
+
+        //print("Mouse pos x: " + GetVectorDirectionNormalized().x + " Mouse pos y: " + GetVectorDirectionNormalized().y);
+
+
+        //Debug.DrawLine(transform.position, mouseVector, Color.red);
 
     }
 
-    private void Direction()
+    public float getMappedAngle()
     {
-        if (canMove && moveInput != Vector2.zero)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - transform.position).normalized;
+
+        // Calculate the angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Map the angle to four directions (up, down, left, right)
+        return MapAngleToFourDirections(angle);
+    }
+
+    private float MapAngleToFourDirections(float angle)
+    {
+        if (angle < 45f && angle >= -45f)
         {
-
-
-            if (moveInput.x > 0)
-            {
-                lookDirection = LookDirection.Right;
-            }
-            else if (moveInput.x < 0)
-            {
-                lookDirection = LookDirection.Left;
-            }
+            lookDirection = LookDirection.Right;
+            return 0f; // Right
+        }
+        else if (angle >= 45f && angle < 135f)
+        {
+            lookDirection = LookDirection.Up;
+            return 1f; // Up
+        }
+        else if (angle >= 135f || angle < -135f)
+        {
+            lookDirection = LookDirection.Left;
+            return 2f; // Left
+        }
+        else
+        {
+            lookDirection = LookDirection.Right;
+            return 3f; // Down
         }
     }
+
+    //public LookDirection AngleToVectorDirection(Transform transform)
+    //{
+    //    float angle = GetMousePosition(transform);
+
+    //    if (angle >= 67.5 && angle < 157.5)
+    //    {
+    //        anglePos = 0f;
+    //        return LookDirection.Up;
+    //    }
+    //    else if (angle >= 157.5 && angle < 247.5)
+    //    {
+    //        anglePos = .25f;
+    //        return LookDirection.Left;
+    //    }
+    //    else if (angle >= 247.5 && angle < 337.5)
+    //    {
+    //        anglePos = .75f;
+    //        return LookDirection.Down;
+    //    }
+    //    else if (angle >= 337.5 || angle < 67.5)
+    //    {
+    //        anglePos = 1f;
+    //        return LookDirection.Right;
+    //    }
+    //    else return LookDirection.Down;
+
+    //}
+
+    public float GetAngle()
+    {
+        return anglePos;
+    }
+
+
+    //private void Direction()
+    //{
+    //    if (canMove && moveInput != Vector2.zero)
+    //    {
+
+
+    //        if (moveInput.x > 0)
+    //        {
+    //            lookDirection = LookDirection.Right;
+    //        }
+    //        else if (moveInput.x < 0)
+    //        {
+    //            lookDirection = LookDirection.Left;
+    //        }
+    //    }
+    //}
 
     public LookDirection GetDirection()
     {
@@ -129,6 +215,34 @@ public class PlayerControllerScript : MonoBehaviour
     public bool IsAttacking()
     {
         return attackScript.IsAttacking();
+    }
+
+
+
+    //public static float GetMousePosition(Transform transform)
+    //{
+    //    Vector3 mousePosition = GetMouseVector(transform);
+    //    float angleRadius = Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x);
+    //    float angle = (180 / Mathf.PI) * angleRadius;
+    //    angle = (angle < 0) ? angle + 360 : angle;
+    //    return angle;
+    //}
+
+    //public static Vector3 GetMouseVector(Transform transform)
+    //{
+    //    float cameraDistance = Camera.main.transform.position.y - transform.position.y;
+    //    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
+    //    return mousePosition;
+    //}
+
+    public Vector3 GetVectorDirection()
+    {
+        return mouseVector;
+    }
+
+    public Vector3 GetVectorDirectionNormalized()
+    {
+        return mouseVector.normalized;
     }
 
 }

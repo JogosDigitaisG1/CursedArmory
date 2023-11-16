@@ -5,19 +5,23 @@ using static PlayerControllerScript;
 
 public class AttackScript : MonoBehaviour
 {
-    private BoxCollider2D attackCollider;
-    Vector2 rightAttackOffset;
+    public BoxCollider2D attackColliderX;
+    public BoxCollider2D attackColliderY;
+    private Vector2 XAttackOffset;
+    private Vector2 YAttackOffset;
 
     private bool isAttacking = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackCollider = GetComponent<BoxCollider2D>();
-        rightAttackOffset = transform.localPosition;
-        attackCollider.enabled = false;
 
-        print(rightAttackOffset);
+        XAttackOffset = attackColliderX.transform.localPosition;
+        YAttackOffset = attackColliderY.transform.localPosition;
+        attackColliderX.enabled = false;
+        attackColliderY.enabled = false;
+
+       
     }
 
     public void Attack(LookDirection lookDirection)
@@ -30,28 +34,53 @@ public class AttackScript : MonoBehaviour
                 case LookDirection.Right: 
                 AttackRight(); break;
 
+            case LookDirection.Up:
+                AttackUp(); break;
+
+            case LookDirection.Down:
+                AttackDown(); break;
+
         }
     }
 
 
     private void AttackRight()
     {
-        attackCollider.enabled = true;
+        attackColliderX.enabled = true;
         isAttacking = true;
-        transform.localPosition = rightAttackOffset;
+        attackColliderX.transform.localPosition = XAttackOffset;
     }
 
     private void AttackLeft()
     {
-        attackCollider.enabled = true;
+        attackColliderX.enabled = true;
         isAttacking = true;
-        transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+        attackColliderX.transform.localPosition = new Vector3(XAttackOffset.x * -1, XAttackOffset.y);
+    }
+
+    private void AttackUp()
+    {
+        attackColliderY.enabled = true;
+        isAttacking = true;
+        attackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y);
+    }
+
+    private void AttackDown()
+    {
+        attackColliderY.enabled = true;
+        isAttacking = true;
+        attackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y * -1);
     }
 
     public void StopAttack()
     {
         isAttacking = false;
-        attackCollider.enabled = false;
+
+        if(attackColliderX.enabled)
+        attackColliderX.enabled = false;
+
+        if (attackColliderY.enabled)
+            attackColliderY.enabled = false;
     }
 
     public bool IsAttacking() {  return isAttacking; }

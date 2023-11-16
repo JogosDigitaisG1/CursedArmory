@@ -46,18 +46,16 @@ public class WalkingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
     public override void UpdateState()
     {
         //Debug.Log("Walking: " + playerController.GetInput());
-        if (playerController.GetInput() != Vector2.zero)
-        {
-            animator.SetFloat(PlayerCons.xMove, playerController.GetInput().x);
-            animator.SetFloat(PlayerCons.yMove, playerController.GetInput().y);
 
-            if (playerController.GetDirection() == LookDirection.Right)
-            {
-                spriteRenderer.flipX = false;
-            }else if(playerController.GetDirection() == LookDirection.Left)
-            {
-                spriteRenderer.flipX = true;
-            }
+        animator.SetFloat(PlayerCons.lookAngle, playerController.GetAngle());
+
+        if (playerController.GetDirection() == LookDirection.Left)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
     }
-}
+    }
