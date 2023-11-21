@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af44249688d4f6f458e157f4206cd1a6, type: 3}
-  m_Name: playerSpeed
+  m_Name: playerAttackSpeed 1
   m_EditorClassIdentifier: 
-  statName: speed
+  statName: attackSpeed
   baseValue: 10

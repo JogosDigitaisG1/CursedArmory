@@ -15,10 +15,10 @@ public class PlayerControllerScript : MonoBehaviour
 
     private LookDirection lookDirection;
 
-
+    private CharacterStatsScript characterStats;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    public float moveSpeed = 1f;
+    private float moveSpeed = 1f;
 
     public bool canMove = true;
 
@@ -33,8 +33,9 @@ public class PlayerControllerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        characterStats = GetComponent<CharacterStatsScript>();
         attackScript = GetComponentInChildren<AttackScript>();
-        print(rb);
+        
     }
 
     void FixedUpdate()
@@ -56,21 +57,9 @@ public class PlayerControllerScript : MonoBehaviour
 
         }
 
-        //Direction();
-
-        //mouseVector = GetMouseVector(transform);
-        //lookDirection = AngleToVectorDirection(transform);
-
 
         anglePos = getMappedAngle();
 
-
-        //print("Mouse pos: " + AngleToVectorDirection(transform));
-
-        //print("Mouse pos x: " + GetVectorDirectionNormalized().x + " Mouse pos y: " + GetVectorDirectionNormalized().y);
-
-
-        //Debug.DrawLine(transform.position, mouseVector, Color.red);
 
     }
 
@@ -105,7 +94,7 @@ public class PlayerControllerScript : MonoBehaviour
         }
         else
         {
-            lookDirection = LookDirection.Right;
+            lookDirection = LookDirection.Down;
             return 3f; // Down
         }
     }
@@ -168,6 +157,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     private bool TryMove(Vector2 direction)
     {
+        moveSpeed = characterStats.GetCurrentMoveSpeed();
         int count = rb.Cast(moveInput, moveFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + offsetCollision);
 
         if (count == 0)
@@ -243,6 +233,12 @@ public class PlayerControllerScript : MonoBehaviour
     public Vector3 GetVectorDirectionNormalized()
     {
         return mouseVector.normalized;
+    }
+
+
+    public void OnAttackTriggerEntered(Collider other)
+    {
+        print("");
     }
 
 }

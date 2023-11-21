@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c7ad893b498745b1ccd35bc5911a6, type: 3}
   m_Name: EnemyCharacterStats0
   m_EditorClassIdentifier: 
-  maxHealth: {fileID: 11400000, guid: 4062e59f95610dd4ab2cef5b0894abf8, type: 2}
-  currentHealth: {fileID: 11400000, guid: 04f995f0415815143adda6441c002aef, type: 2}
-  attackPower: {fileID: 11400000, guid: 6b7818d898948124cb68c42cc05ffdf6, type: 2}
-  defense: {fileID: 11400000, guid: c11cee2a5bfcc7f45a18cf101507dd47, type: 2}
-  speed: {fileID: 11400000, guid: 3093e9adbf8a680419ef18b7b26f53ff, type: 2}
+  health: 10
+  attackPower: 0
+  attackSpeed: 0
+  defense: 0
+  moveSpeed: 2

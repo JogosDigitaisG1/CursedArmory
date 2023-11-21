@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d871ea4a9c14e94da3d1bace3085255, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: af44249688d4f6f458e157f4206cd1a6, type: 3}
+  m_Name: playerMoveSpeed
   m_EditorClassIdentifier: 
-  health: 100
-  attackPower: 5
-  attackSpeed: 0
-  defense: 0
-  moveSpeed: 10
-  swordSpirits: 0
-  shieldSpirits: 0
-  bowSpirits: 0
-  staffSpirits: 0
+  statName: moveSpeed
+  baseValue: 10

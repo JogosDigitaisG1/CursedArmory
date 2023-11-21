@@ -5,17 +5,22 @@ using static PlayerControllerScript;
 
 public class AttackScript : MonoBehaviour
 {
-    public BoxCollider2D attackColliderX;
-    public BoxCollider2D attackColliderY;
+    public Collider2D attackColliderX;
+    public Collider2D attackColliderY;
     private Vector2 XAttackOffset;
     private Vector2 YAttackOffset;
 
     private bool isAttacking = false;
 
+    public LayerMask attackColliderLayer;
+
+    [SerializeField]
+    private CharacterStatsScript characterStatsScript;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        characterStatsScript= GetComponentInParent<CharacterStatsScript>();
         XAttackOffset = attackColliderX.transform.localPosition;
         YAttackOffset = attackColliderY.transform.localPosition;
         attackColliderX.enabled = false;
@@ -26,6 +31,7 @@ public class AttackScript : MonoBehaviour
 
     public void Attack(LookDirection lookDirection)
     {
+        //print(lookDirection.ToString());
         switch(lookDirection)
         {
             case LookDirection.Left:
@@ -76,12 +82,45 @@ public class AttackScript : MonoBehaviour
     {
         isAttacking = false;
 
-        if(attackColliderX.enabled)
-        attackColliderX.enabled = false;
 
-        if (attackColliderY.enabled)
-            attackColliderY.enabled = false;
+        attackColliderX.enabled = false;
+        attackColliderY.enabled = false;
     }
 
     public bool IsAttacking() {  return isAttacking; }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+
+        if (collider.tag == TagsCons.enemyTag)
+        {
+            print("trigger hit enemy");
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("collision");
+        if (collision.gameObject.tag == TagsCons.enemyTag)
+        {
+            print("collision hit enemy");
+        }
+    }   
+
+    public void OnChildTriggerEnter2D(Collider2D collision)
+    {
+        if ((attackColliderX.IsTouching(collision) || attackColliderY.IsTouching(collision)) && collision.gameObject.tag == TagsCons.enemyTag)
+        {
+            int damage = characterStatsScript.GetAttackPower();
+            collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(damage);
+            print("collider hit enemy");
+        }
+    }
+
+    //private bool IsAttackCollider(Collider2D collider)
+    //{
+    //    // Check if the collider's layer matches the attack collider layer
+    //    return (attackColliderLayer.value & (1 << collider.gameObject.layer)) != 0;
+    //}
 }
