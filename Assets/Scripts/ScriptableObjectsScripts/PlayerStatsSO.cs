@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerStatsSO : CharacterStatSO
 {
 
-    public StatSO swordSpirits;
-    public StatSO shieldSpirits;
-    public StatSO bowSpirits;
-    public StatSO staffSpirits;
+    public int swordSpirits;
+    public int shieldSpirits;
+    public int bowSpirits;
+    public int staffSpirits;
 
 }

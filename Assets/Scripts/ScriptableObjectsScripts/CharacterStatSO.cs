@@ -6,10 +6,10 @@ using UnityEngine;
 public class CharacterStatSO : ScriptableObject
 {
 
-    public StatSO maxHealth;
-    public StatSO currentHealth;
-    public StatSO attackPower;
-    public StatSO defense;
-    public StatSO speed;
+    public int health;
+    public int attackPower;
+    public int attackSpeed;
+    public int defense;
+    public int moveSpeed;
 
 }
