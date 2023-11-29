@@ -41,7 +41,7 @@ public class PlayerControllerScript : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (canMove && moveInput != Vector2.zero)
+        if (characterStats.IsAlive() && canMove && moveInput != Vector2.zero)
         {
             bool success = TryMove(moveInput);
 

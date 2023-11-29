@@ -9,8 +9,11 @@ public class WalkingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
     private PlayerControllerScript playerController;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    public WalkingStatePlayer(PlayerControllerScript playerController, Animator animator, SpriteRenderer spriteRenderer) : base(PlayerStateManager.PlayerStates.Walk) {
+    private CharacterStatsScript characterStatsScript;
+    public WalkingStatePlayer(CharacterStatsScript characterStatsScript, PlayerControllerScript playerController, Animator animator, 
+        SpriteRenderer spriteRenderer) : base(PlayerStateManager.PlayerStates.Walk) {
     
+        this.characterStatsScript = characterStatsScript;
         this.playerController = playerController;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -28,6 +31,11 @@ public class WalkingStatePlayer : BaseState<PlayerStateManager.PlayerStates>
 
     public override PlayerStateManager.PlayerStates GetNextState()
     {
+        if (!characterStatsScript.IsAlive())
+        {
+            return PlayerStates.Dead;
+        }
+
         if (playerController.IsAttacking())
         {
             return PlayerStates.Attack;

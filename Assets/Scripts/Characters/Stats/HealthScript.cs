@@ -2,25 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthScript : MonoBehaviour
 {
     [SerializeField]
     private CharacterStatsScript characterStatsScript;
 
-    private void Start()
+
+
+
+    private void Awake()
     {
+       
         characterStatsScript = GetComponent<CharacterStatsScript>();
-        Debug.Log(characterStatsScript);
+
+
     }
 
     public void TakeDamage(int amount)
     {
-        Debug.Log(characterStatsScript);
+        
         int currentHP = 0;
         if (characterStatsScript != null)
         {
-            
+           // PlayHurtAnimation();
             currentHP = characterStatsScript.GetCurrentHp();
             currentHP -= amount;
 
@@ -31,14 +37,17 @@ public class HealthScript : MonoBehaviour
 
             if(currentHP <= 0)
             {
-                Dead();
+                characterStatsScript.Dead();
             }
-
+          //  ReturnAnimation();
         }
     }
 
-    private void Dead()
+
+
+    public void Dead()
     {
+
         Destroy(gameObject);
     }
 

@@ -9,6 +9,8 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
     private PlayerControllerScript playerController;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private CharacterStatsScript characterStatsScript;
+
     public enum PlayerStates
     {
         Idle, 
@@ -25,11 +27,12 @@ public class PlayerStateManager : StateManager<PlayerStateManager.PlayerStates>
         playerController = GetComponent<PlayerControllerScript>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        characterStatsScript = GetComponent<CharacterStatsScript>();
 
         // Initialize states
-        States.Add(PlayerStates.Idle, new IdleStatePlayer(playerController, animator, spriteRenderer));
-        States.Add(PlayerStates.Walk, new WalkingStatePlayer(playerController, animator, spriteRenderer));
-        States.Add(PlayerStates.Attack, new AttackingStatePlayer(playerController, animator));
+        States.Add(PlayerStates.Idle, new IdleStatePlayer(characterStatsScript, playerController, animator, spriteRenderer));
+        States.Add(PlayerStates.Walk, new WalkingStatePlayer(characterStatsScript, playerController, animator, spriteRenderer));
+        States.Add(PlayerStates.Attack, new AttackingStatePlayer(characterStatsScript, playerController, animator));
         States.Add(PlayerStates.Dead, new DeadStatePlayer(playerController, animator));
 
         // Set initial state
