@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 {
     protected Dictionary<EState, BaseState<EState>> States = new Dictionary<EState, BaseState<EState>>();
 
+    [SerializeField]
     protected BaseState<EState> CurrentState;
 
     protected bool isTransitioningState = false;
@@ -19,7 +21,7 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
         return CurrentState;
     }
 
-    void Update() {
+    void FixedUpdate() {
 
         EState nextStateKey = CurrentState.GetNextState();
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerStateManager;
 
 public class DeadStatePlayer : BaseState<PlayerStateManager.PlayerStates>
 {
@@ -15,21 +16,21 @@ public class DeadStatePlayer : BaseState<PlayerStateManager.PlayerStates>
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        animator.Play(PlayerCons.deadAnim);
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override PlayerStateManager.PlayerStates GetNextState()
     {
-        throw new System.NotImplementedException();
+        return PlayerStates.Dead;
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

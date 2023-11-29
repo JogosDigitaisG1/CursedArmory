@@ -94,17 +94,17 @@ public class AttackScript : MonoBehaviour
 
         if (collider.tag == TagsCons.enemyTag)
         {
-            print("trigger hit enemy");
+            Debug.Log("trigger hit enemy playerattakc scriot");
         }
         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("collision");
+        
         if (collision.gameObject.tag == TagsCons.enemyTag)
         {
-            print("collision hit enemy");
+            Debug.Log("collision hit enemy oncollision player scri");
         }
     }   
 
@@ -114,7 +114,7 @@ public class AttackScript : MonoBehaviour
         {
             int damage = characterStatsScript.GetAttackPower();
             collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(damage);
-            print("collider hit enemy");
+            Debug.Log("collider hit enemy on childe trigger");
         }
     }
 

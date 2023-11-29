@@ -10,5 +10,7 @@ public class PlayerStatsSO : CharacterStatSO
     public int shieldSpirits;
     public int bowSpirits;
     public int staffSpirits;
+    public int gold;
+    public int bagCapacity;
 
 }

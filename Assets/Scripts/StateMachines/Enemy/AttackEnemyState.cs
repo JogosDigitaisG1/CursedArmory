@@ -1,0 +1,80 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
+{
+
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private DetectScript detectScript;
+    private MovementEnemyScript movementEnemyScript;
+    private AttackEnemyScript attackEnemyScript;
+    private CharacterStatsScript characterStatsScript;
+
+    public AttackEnemyState(CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript,
+        AttackEnemyScript attackEnemyScript) : base(EnemyStateManager.EnemyStates.Attack)
+    {
+        this.characterStatsScript = characterStatsScript;
+        this.animator = animator;
+        this.spriteRenderer = spriteRenderer;
+        this.detectScript = detectScript;
+        this.movementEnemyScript = movementEnemyScript;
+        this.attackEnemyScript = attackEnemyScript;
+    }
+
+    public override void EnterState()
+    {
+        animator.Play(EnemyCons.AttackEnemy);
+    }
+
+    public override void ExitState()
+    {
+        
+    }
+
+    public override EnemyStateManager.EnemyStates GetNextState()
+    {
+        if (!characterStatsScript.IsAlive())
+        {
+            return EnemyStateManager.EnemyStates.Dead;
+        }
+
+        if (movementEnemyScript.IsCloseToPlayer())
+        {
+            return EnemyStateManager.EnemyStates.Attack;
+        }
+        if (detectScript.DetectedPlayer())
+        {
+            attackEnemyScript.StopAttack();
+            return EnemyStateManager.EnemyStates.Follow;
+        }
+        else
+        {
+            attackEnemyScript.StopAttack();
+            movementEnemyScript.StopFollowPlayer();
+            return EnemyStateManager.EnemyStates.Idle;
+        }
+    }
+
+    public override void UpdateState()
+    {
+        movementEnemyScript.FollowPlayer();
+
+        if (!attackEnemyScript.IsAttacking())
+        {
+            if (movementEnemyScript.GetEnemyLookDirection() == MovementEnemyScript.EnemyLookDirection.Left)
+            {
+                spriteRenderer.flipX = true;
+
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+            }
+
+        }
+
+
+    }
+}

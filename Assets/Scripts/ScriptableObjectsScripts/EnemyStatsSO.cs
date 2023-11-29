@@ -6,6 +6,13 @@ using UnityEngine;
 public class EnemyStatsSO : CharacterStatSO
 {
 
-   //public StatSO type;
+    //public StatSO type;
+    public float idleTimer;
+    public float roamTimer;
+
+    public override string ToString()
+    {
+        return "idle timer = " + idleTimer + " roamTime: " + roamTimer;
+    }
 
 }

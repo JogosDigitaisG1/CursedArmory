@@ -11,10 +11,12 @@ public class IdleStatePlayer : BaseState<PlayerStateManager.PlayerStates>
     private PlayerControllerScript playerController;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private CharacterStatsScript characterStatsScript;
 
-    public IdleStatePlayer(PlayerControllerScript playerControllerScript, Animator animator, SpriteRenderer spriteRenderer) : base(PlayerStateManager.PlayerStates.Idle)
+    public IdleStatePlayer(CharacterStatsScript characterStatsScript, PlayerControllerScript playerControllerScript, Animator animator,
+        SpriteRenderer spriteRenderer) : base(PlayerStateManager.PlayerStates.Idle)
     {
-
+        this.characterStatsScript = characterStatsScript;
         playerController = playerControllerScript;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -32,6 +34,10 @@ public class IdleStatePlayer : BaseState<PlayerStateManager.PlayerStates>
 
     public override PlayerStateManager.PlayerStates GetNextState()
     {
+        if (!characterStatsScript.IsAlive())
+        {
+            return PlayerStates.Dead;
+        }
 
 
         if (playerController.IsAttacking())
