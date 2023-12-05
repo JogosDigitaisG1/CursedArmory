@@ -12,6 +12,7 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
     private MovementEnemyScript movementEnemyScript;
     private CharacterStatsScript characterStatsScript;
     private AttackEnemyScript attackEnemyScript;
+    private EnemyScript enemyScript;
 
     [SerializeField]
     private float idleTimerMax;
@@ -35,15 +36,16 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
         movementEnemyScript = GetComponent<MovementEnemyScript>();
         characterStatsScript = GetComponent<CharacterStatsScript>();
         attackEnemyScript = GetComponentInChildren<AttackEnemyScript>();
+        enemyScript = GetComponentInChildren<EnemyScript>();
 
         idleTimerMax = characterStatsScript.GetEnemyIdleTimer();
         roamTimerMax = characterStatsScript.GetEnemyRoamTimer();
 
         // Initialize states
-        States.Add(EnemyStates.Idle, new IdleEnemyState(characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, idleTimerMax));
-        States.Add(EnemyStates.Roam, new RoamEnemyState(characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, roamTimerMax));
-        States.Add(EnemyStates.Follow, new FollowEnemyState(characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript));
-        States.Add(EnemyStates.Attack, new AttackEnemyState(characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript));
+        States.Add(EnemyStates.Idle, new IdleEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, idleTimerMax));
+        States.Add(EnemyStates.Roam, new RoamEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, roamTimerMax));
+        States.Add(EnemyStates.Follow, new FollowEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript));
+        States.Add(EnemyStates.Attack, new AttackEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript));
         States.Add(EnemyStates.Dead, new DeadEnemyState(animator, spriteRenderer));
 
         // Set initial state

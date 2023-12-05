@@ -9,10 +9,12 @@ public class FollowEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private DetectScript detectScript;
     private MovementEnemyScript movementEnemyScript;
     private CharacterStatsScript characterStatsScript;
+    private EnemyScript enemyScript;
 
-    public FollowEnemyState(CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript) 
+    public FollowEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript) 
         : base(EnemyStateManager.EnemyStates.Follow)
     {
+        this.enemyScript = enemyScript;
         this.characterStatsScript = characterStatsScript;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -42,19 +44,29 @@ public class FollowEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-        if (movementEnemyScript.IsCloseToPlayer())
+        if (!enemyScript.notInRoom)
         {
-            return EnemyStateManager.EnemyStates.Attack;
-        }
-        if (detectScript.DetectedPlayer())
-        {
-            return EnemyStateManager.EnemyStates.Follow;
+            if (movementEnemyScript.IsCloseToPlayer())
+            {
+                return EnemyStateManager.EnemyStates.Attack;
+            }
+            if (detectScript.DetectedPlayer())
+            {
+                return EnemyStateManager.EnemyStates.Follow;
+            }
+            else
+            {
+                movementEnemyScript.StopFollowPlayer();
+                return EnemyStateManager.EnemyStates.Idle;
+            }
         }
         else
         {
             movementEnemyScript.StopFollowPlayer();
             return EnemyStateManager.EnemyStates.Idle;
         }
+
+       
     }
 
     public override void UpdateState()
