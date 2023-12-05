@@ -13,14 +13,18 @@ public class RoamEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private DetectScript detectScript;
     private MovementEnemyScript movementEnemyScript;
     private CharacterStatsScript characterStatsScript;
+    private EnemyScript enemyScript;
 
     [SerializeField]
     private float roamTimerMax;
     [SerializeField]
     private float roamTimer;
 
-    public RoamEnemyState(CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript, float roamTimerMax) : base(EnemyStateManager.EnemyStates.Roam)
+    public RoamEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator,
+        SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript, float roamTimerMax) :
+        base(EnemyStateManager.EnemyStates.Roam)
     {
+        this.enemyScript = enemyScript;
         this.characterStatsScript = characterStatsScript;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -52,19 +56,28 @@ public class RoamEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-        if (roamTimer <= 0)
+        if (!enemyScript.notInRoom)
         {
-            return EnemyStateManager.EnemyStates.Idle;
-        }
-        if (detectScript.DetectedPlayer())
-        {
-            return EnemyStateManager.EnemyStates.Follow;
+            if (roamTimer <= 0)
+            {
+                return EnemyStateManager.EnemyStates.Idle;
+            }
+            if (detectScript.DetectedPlayer())
+            {
+                return EnemyStateManager.EnemyStates.Follow;
+            }
+            else
+            {
+
+                return EnemyStateManager.EnemyStates.Roam;
+            }
         }
         else
         {
-
-            return EnemyStateManager.EnemyStates.Roam;
+            return EnemyStateManager.EnemyStates.Idle;
         }
+
+        
 
     }
 

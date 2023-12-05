@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 5458336151235126660}
   - component: {fileID: 5357309555784326937}
   - component: {fileID: 1468601478931248270}
+  - component: {fileID: 3794935908880397952}
   m_Layer: 0
   m_Name: EnemySword
   m_TagString: Enemy
@@ -355,6 +356,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackEnemyScript: {fileID: 3290230704085061986}
+--- !u!114 &3794935908880397952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676114518241581280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3be079cb8c9444a8f85fb97014774a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notInRoom: 1
 --- !u!1 &4879688197342175721
 GameObject:
   m_ObjectHideFlags: 0
