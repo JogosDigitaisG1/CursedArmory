@@ -11,10 +11,12 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private MovementEnemyScript movementEnemyScript;
     private AttackEnemyScript attackEnemyScript;
     private CharacterStatsScript characterStatsScript;
+    private EnemyScript enemyScript;
 
-    public AttackEnemyState(CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript,
+    public AttackEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript,
         AttackEnemyScript attackEnemyScript) : base(EnemyStateManager.EnemyStates.Attack)
     {
+        this.enemyScript = enemyScript;
         this.characterStatsScript = characterStatsScript;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -40,14 +42,23 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-        if (movementEnemyScript.IsCloseToPlayer())
+        if (!enemyScript.notInRoom)
         {
-            return EnemyStateManager.EnemyStates.Attack;
-        }
-        if (detectScript.DetectedPlayer())
-        {
-            attackEnemyScript.StopAttack();
-            return EnemyStateManager.EnemyStates.Follow;
+            if (movementEnemyScript.IsCloseToPlayer())
+            {
+                return EnemyStateManager.EnemyStates.Attack;
+            }
+            if (detectScript.DetectedPlayer())
+            {
+                attackEnemyScript.StopAttack();
+                return EnemyStateManager.EnemyStates.Follow;
+            }
+            else
+            {
+                attackEnemyScript.StopAttack();
+                movementEnemyScript.StopFollowPlayer();
+                return EnemyStateManager.EnemyStates.Idle;
+            }
         }
         else
         {
@@ -55,6 +66,7 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
             movementEnemyScript.StopFollowPlayer();
             return EnemyStateManager.EnemyStates.Idle;
         }
+        
     }
 
     public override void UpdateState()

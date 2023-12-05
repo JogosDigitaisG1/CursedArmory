@@ -12,14 +12,16 @@ public class IdleEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private DetectScript detectScript;
     private MovementEnemyScript movementEnemyScript;
     private CharacterStatsScript characterStatsScript;
+    private EnemyScript enemyScript;
 
     [SerializeField]
     private float idleTimerMax;
     [SerializeField]
     private float idleTimer;
 
-    public IdleEnemyState(CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript, float idleTimerMax) : base(EnemyStateManager.EnemyStates.Idle)
+    public IdleEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript, float idleTimerMax) : base(EnemyStateManager.EnemyStates.Idle)
     {
+        this.enemyScript = enemyScript;
         this.characterStatsScript = characterStatsScript;
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
@@ -49,19 +51,26 @@ public class IdleEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-
-        if (idleTimer <= 0)
+        if (!enemyScript.notInRoom)
         {
-            return EnemyStateManager.EnemyStates.Roam;
-        }
-        if (detectScript.DetectedPlayer())
-        {
-            return EnemyStateManager.EnemyStates.Follow;
+            if (idleTimer <= 0)
+            {
+                return EnemyStateManager.EnemyStates.Roam;
+            }
+            if (detectScript.DetectedPlayer())
+            {
+                return EnemyStateManager.EnemyStates.Follow;
+            }
+            else
+            {
+                return EnemyStateManager.EnemyStates.Idle;
+            }
         }
         else
         {
             return EnemyStateManager.EnemyStates.Idle;
         }
+
 
     }
 
