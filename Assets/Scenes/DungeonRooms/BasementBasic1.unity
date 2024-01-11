@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ee046fbd32ee3409dd7b78c0cf6f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
+  grid: {fileID: 1377133464}
   spawnerData:
   - name: Enemy1
     spawnerData: {fileID: 11400000, guid: 9fb0c439a752ad54ca79efa1b89618dc, type: 2}
@@ -1698,13 +1698,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a602452614e284d93f7f3d1c1fa17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 0}
+  room: {fileID: 1377133460}
   grid:
     cols: 0
     rows: 0
-    verticalOffset: 0
-    horizontalOffset: 0
-  gridTile: {fileID: 0}
+    verticalOffset: 7
+    horizontalOffset: 13
+  gridTile: {fileID: 6619147406131806490, guid: fe1fa72794fb2864ca1fda7d046f14b1, type: 3}
   availablePoints: []
 --- !u!1 &1647249440
 GameObject:
