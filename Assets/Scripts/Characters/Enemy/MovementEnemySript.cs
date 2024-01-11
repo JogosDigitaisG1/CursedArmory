@@ -17,7 +17,7 @@ public class MovementEnemyScript : MonoBehaviour
     public Vector2 decisionTime = new Vector2(1, 4);
     private float decisionTimeCount = 0;
 
-    private Vector3[] moveDirectionsX = new Vector3[] { Vector3.right, Vector3.left,Vector3.zero};
+    private Vector3[] moveDirectionsX = new Vector3[] { Vector3.right, Vector3.left, Vector3.zero };
     private Vector3[] moveDirectionsY = new Vector3[] { Vector3.up, Vector3.down, Vector3.zero };
 
     private int currentMoveDirectionX;
@@ -134,7 +134,7 @@ public class MovementEnemyScript : MonoBehaviour
 
 
 
-        
+
     }
 
 
@@ -146,7 +146,7 @@ public class MovementEnemyScript : MonoBehaviour
         if (count == 0)
         {
             moveDir = direction;
-            rb2d.MovePosition(transform.position + (direction * moveSpeed * Time.fixedDeltaTime));           
+            rb2d.MovePosition(transform.position + (direction * moveSpeed * Time.fixedDeltaTime));
             return true;
         }
         else
@@ -170,6 +170,11 @@ public class MovementEnemyScript : MonoBehaviour
     public bool IsCloseToPlayer()
     {
         return closeToPlayer;
+    }
+
+    public Vector3 getPlayerPos()
+    {
+        return playerPos;
     }
 
     private void ChooseRoamDirection()

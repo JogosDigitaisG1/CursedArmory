@@ -163,7 +163,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151203663}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -293,7 +293,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175243545}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -315,7 +315,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -329,7 +329,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 1}
+  m_Size: {x: 0.3, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &175243548
 SpriteRenderer:
@@ -428,6 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206772696}
   - component: {fileID: 206772697}
+  - component: {fileID: 206772698}
   m_Layer: 0
   m_Name: DoorLeft
   m_TagString: Untagged
@@ -463,7 +464,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9b4681fe58e8c4e938ab7ed714d469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomScript: {fileID: 0}
   doorType: 0
+--- !u!50 &206772698
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206772695}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &334440706
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334440707}
   - component: {fileID: 334440708}
+  - component: {fileID: 334440709}
   m_Layer: 0
   m_Name: DoorRight
   m_TagString: Untagged
@@ -509,7 +539,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9b4681fe58e8c4e938ab7ed714d469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomScript: {fileID: 0}
   doorType: 1
+--- !u!50 &334440709
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334440706}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &544906359
 GameObject:
   m_ObjectHideFlags: 3
@@ -666,7 +724,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617920487}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -688,7 +746,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -702,7 +760,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 1}
+  m_Size: {x: 0.3, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &617920490
 SpriteRenderer:
@@ -796,7 +854,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794608184}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -818,7 +876,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -832,7 +890,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 1}
+  m_Size: {x: 0.2, y: 1.6}
   m_EdgeRadius: 0
 --- !u!212 &794608187
 SpriteRenderer:
@@ -896,6 +954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810999343}
   - component: {fileID: 810999344}
+  - component: {fileID: 810999345}
   m_Layer: 0
   m_Name: DoorBottom
   m_TagString: Untagged
@@ -931,7 +990,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9b4681fe58e8c4e938ab7ed714d469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomScript: {fileID: 0}
   doorType: 3
+--- !u!50 &810999345
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810999342}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &937203233
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +1059,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937203233}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -994,7 +1081,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1008,7 +1095,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 1}
+  m_Size: {x: 0.2, y: 1.6}
   m_EdgeRadius: 0
 --- !u!212 &937203236
 SpriteRenderer:
@@ -1062,58 +1149,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &948678017
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 948678018}
-  - component: {fileID: 948678019}
-  m_Layer: 0
-  m_Name: Grid
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &948678018
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948678017}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1377133461}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &948678019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948678017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a602452614e284d93f7f3d1c1fa17b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  room: {fileID: 0}
-  grid:
-    cols: 0
-    rows: 0
-    verticalOffset: 7
-    horizontalOffset: 13
-  gridTile: {fileID: 6619147406131806490, guid: fe1fa72794fb2864ca1fda7d046f14b1, type: 3}
-  availablePoints: []
 --- !u!1 &1001945050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1189,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001945050}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1284,7 +1319,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009556167}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1384,6 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131828814}
   - component: {fileID: 1131828815}
+  - component: {fileID: 1131828816}
   m_Layer: 0
   m_Name: DoorTop
   m_TagString: Untagged
@@ -1419,7 +1455,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9b4681fe58e8c4e938ab7ed714d469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomScript: {fileID: 0}
   doorType: 2
+--- !u!50 &1131828816
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131828813}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1306251841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1562,7 @@ GameObject:
   - component: {fileID: 1377133460}
   - component: {fileID: 1377133462}
   - component: {fileID: 1377133463}
+  - component: {fileID: 1377133464}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -1518,6 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCameraParent: {fileID: 1647249440}
+  virtualCameraConfiner: {fileID: 0}
   activeRoom: 0
   width: 27
   height: 15
@@ -1528,6 +1594,8 @@ MonoBehaviour:
   topDoor: {fileID: 0}
   bottomDoor: {fileID: 0}
   doors: []
+  enemies: []
+  numOfEnemies: 0
 --- !u!4 &1377133461
 Transform:
   m_ObjectHideFlags: 0
@@ -1547,7 +1615,6 @@ Transform:
   - {fileID: 1131828814}
   - {fileID: 810999343}
   - {fileID: 1647249441}
-  - {fileID: 948678018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1377133462
@@ -1611,7 +1678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ee046fbd32ee3409dd7b78c0cf6f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 948678019}
+  grid: {fileID: 0}
   spawnerData:
   - name: Enemy1
     spawnerData: {fileID: 11400000, guid: 9fb0c439a752ad54ca79efa1b89618dc, type: 2}
@@ -1619,6 +1686,26 @@ MonoBehaviour:
     spawnerData: {fileID: 11400000, guid: d717851865e478247a7d569c5a9d2aee, type: 2}
   - name: ItemSpawner
     spawnerData: {fileID: 11400000, guid: 828525acb1b0d1546adba10e94fa66e8, type: 2}
+--- !u!114 &1377133464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377133459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a602452614e284d93f7f3d1c1fa17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
+  grid:
+    cols: 0
+    rows: 0
+    verticalOffset: 0
+    horizontalOffset: 0
+  gridTile: {fileID: 0}
+  availablePoints: []
 --- !u!1 &1647249440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1849,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725679590}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

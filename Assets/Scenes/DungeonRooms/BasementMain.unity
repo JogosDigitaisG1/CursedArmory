@@ -4930,9 +4930,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.010362694
-    width: 1.0007284
-    height: 0.98011625
+    y: 0.0099502485
+    width: 1.0006998
+    height: 0.9794632
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -5012,7 +5012,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -5980,6 +5980,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 48863948852210280, guid: de9bb548cfc5f4341a7e0d396bf32008, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 198772040, guid: 98d53f3dfdd3d98498398ab0843cf7b5, type: 3}
+    - target: {fileID: 48863948852210280, guid: de9bb548cfc5f4341a7e0d396bf32008, type: 3}
       propertyPath: m_SortingOrder
       value: 8
       objectReference: {fileID: 0}
@@ -6029,7 +6033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3676114518241581280, guid: de9bb548cfc5f4341a7e0d396bf32008, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

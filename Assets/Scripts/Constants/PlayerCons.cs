@@ -10,6 +10,8 @@ public static class PlayerCons
     public static string idleAnim { get; } = "idlePlayer";
     public static string attackAnim { get; } = "attackPlayer";
     public static string deadAnim { get; } = "deadPlayer";
+    public static string slashAnim { get; } = "slashAnim";
+    public static string noSlash { get; } = "noSlash";
 
 
 }

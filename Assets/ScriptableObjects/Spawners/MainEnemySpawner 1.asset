@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6622afa062b90c449d482e8b515a452, type: 3}
   m_Name: MainEnemySpawner 1
   m_EditorClassIdentifier: 
-  itemToSpawn: {fileID: 3676114518241581280, guid: 2cfca220f55b12046b49553a9d5a515b, type: 3}
+  itemToSpawn: {fileID: 6851776517243383515, guid: 15dc4e7f4daa81d42bb83db733a469c3, type: 3}
   minSpawn: 0
   maxSpawn: 2

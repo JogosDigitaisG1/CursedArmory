@@ -69,9 +69,12 @@ public class RoomControllerScript : MonoBehaviour
     {
         foreach (RoomScript room in loadedRooms)
         {
+
+            EnemyScript[] enemies = room.GetComponentsInChildren<EnemyScript>();
+            room.enemies = enemies;
+            room.numOfEnemies = enemies.Length;
             if (currentRoom != room)
-            {
-                EnemyScript[] enemies = room.GetComponentsInChildren<EnemyScript>();
+            {               
                 if (enemies != null)
                 {
                     foreach (EnemyScript enemy in enemies)
@@ -82,7 +85,6 @@ public class RoomControllerScript : MonoBehaviour
             }
             else
             {
-                EnemyScript[] enemies = room.GetComponentsInChildren<EnemyScript>();
                 if (enemies != null)
                 {
                     foreach (EnemyScript enemy in enemies)

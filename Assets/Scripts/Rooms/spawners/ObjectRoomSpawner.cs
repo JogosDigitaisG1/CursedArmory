@@ -45,7 +45,7 @@ public class ObjectRoomSpawner : MonoBehaviour
             SpawnObjects(rs);
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {

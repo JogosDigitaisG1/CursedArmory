@@ -46,6 +46,9 @@ public class GridControllerScript : MonoBehaviour
             }
         }
 
-        GetComponentInParent<ObjectRoomSpawner>().InitializeObjectSpawning();
+        if (transform.parent.TryGetComponent<ObjectRoomSpawner>(out ObjectRoomSpawner objectRoomSpawner))
+        {
+            objectRoomSpawner.InitializeObjectSpawning ();
+        }
     }
 }

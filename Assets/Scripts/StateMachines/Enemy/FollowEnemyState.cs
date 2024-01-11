@@ -24,7 +24,6 @@ public class FollowEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
     public override void EnterState()
     {
-        Debug.Log("Follow state");
         animator.Play(EnemyCons.WalkEnemy);
         movementEnemyScript.FollowPlayerToggle(detectScript.GetPlayerCollider());
 
