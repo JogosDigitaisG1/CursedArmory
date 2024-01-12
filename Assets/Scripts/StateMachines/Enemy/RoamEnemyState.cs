@@ -56,7 +56,7 @@ public class RoamEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-        if (!enemyScript.notInRoom)
+        if (enemyScript.activeRoom)
         {
             if (roamTimer <= 0)
             {

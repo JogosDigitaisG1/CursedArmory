@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482bab86ca0cc244dbd696fc1721b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStats: {fileID: 11400000, guid: 7a077ddd5d6d8d54696b812906a48b13, type: 2}
+  defaultStats: {fileID: 11400000, guid: 6498b3cfaf4ed304dadb703ebf4ac280, type: 2}
   baseStats:
     hp: 0
     attackPower: 0
@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!114 &3017940409966440797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,4 +432,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3be079cb8c9444a8f85fb97014774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notInRoom: 1
+  activeRoom: 1

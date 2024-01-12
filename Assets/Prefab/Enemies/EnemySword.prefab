@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!114 &5458336151235126660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3be079cb8c9444a8f85fb97014774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notInRoom: 1
+  activeRoom: 0
 --- !u!1 &4879688197342175721
 GameObject:
   m_ObjectHideFlags: 0

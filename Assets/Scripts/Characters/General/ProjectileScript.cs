@@ -32,7 +32,8 @@ public class ProjectileScript : MonoBehaviour
         {
             print("porjectile hit");
 
-            collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(projectileSO.damage);
+            collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(projectileSO.damage, new List<AttackEffectType> { AttackEffectType.Damage,
+                AttackEffectType.Invincibility }, Vector2.zero, 0f, 0f);
         }
     }
 }

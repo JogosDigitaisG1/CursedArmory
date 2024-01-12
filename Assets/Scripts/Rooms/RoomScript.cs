@@ -83,16 +83,21 @@ public class RoomScript : MonoBehaviour
 
         
 
-        if (GetRoomCenter().y == 0 && GetRoomCenter().x == 0)
+
+
+
+
+
+    }
+
+    public void StartGameMain()
+    {
+                if (GetRoomCenter().y == 0 && GetRoomCenter().x == 0)
         {
             virtualCameraParent.SetActive(true);
             parentRoomController.currentRoom = this;
             activeRoom = true;
         }
-
-
-
-
     }
 
     private void Update()
@@ -230,7 +235,7 @@ public class RoomScript : MonoBehaviour
     {
         Debug.Log("door collided " + doorScript.doorType);
         RoomScript newRoom = null;
-        if (activeRoom)
+        if (activeRoom && numOfEnemies <= 0)
         {
             
             virtualCameraParent.SetActive(false);
@@ -246,7 +251,7 @@ public class RoomScript : MonoBehaviour
                     break;
                 case DoorType.up:
                     newRoom = GetTop();
-                    break;
+                    break;      
                 case DoorType.down:
                     newRoom = GetBottom();
                     break;
@@ -255,9 +260,10 @@ public class RoomScript : MonoBehaviour
 
             }
 
-            parentRoomController.currentRoom = newRoom;
+            parentRoomController.currentRoom = newRoom; 
             newRoom.TurnOnCamera();
-            collision.gameObject.GetComponentInParent<PlayerControllerScript>().SetCenterOfRoom(newRoom.GetRoomCenter());
+            collision.gameObject.GetComponentInParent<PlayerControllerScript>().roomScript = newRoom;
+            collision.gameObject.GetComponentInParent<PlayerControllerScript>().SetCenterOfRoom(newRoom.GetRoomCenter(), newRoom);
         }
 
        

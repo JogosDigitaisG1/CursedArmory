@@ -61,7 +61,10 @@ public class SwordEnemyAttack : MonoBehaviour, IEnemyAttack
         if ((attackCollider.IsTouching(collision) && collision.gameObject.tag == TagsCons.playerTag))
         {
             int damage = characterStatsScript.GetAttackPower();
-            collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(damage);
+
+            Vector2 knockbackDirection = ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
+            collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(damage, new List<AttackEffectType> { AttackEffectType.Damage, 
+                AttackEffectType.Invincibility, AttackEffectType.KnockBack}, knockbackDirection, 5f, .8f);
             print("hit " + collision.gameObject.name);
         }
     }

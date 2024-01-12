@@ -30,6 +30,7 @@ public class RoomControllerScript : MonoBehaviour
     bool isLoadingRoom = false;
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
+    public bool gameStarted = false;
 
 
     private void Awake()
@@ -44,6 +45,7 @@ public class RoomControllerScript : MonoBehaviour
         //LoadRoom("Start", -1, 0);
         //LoadRoom("Start", 0, 1);
         //LoadRoom("Start", 0, -1);
+
 
 
         
@@ -63,6 +65,15 @@ public class RoomControllerScript : MonoBehaviour
         //}
 
         UpdateRooms();
+
+        if (spawnedBossRoom && !gameStarted)
+        {
+            foreach (RoomScript room in loadedRooms)
+            {
+                gameStarted = true;
+                room.StartGameMain();
+            }
+        }
     }
 
     private void UpdateRooms()
@@ -73,26 +84,15 @@ public class RoomControllerScript : MonoBehaviour
             EnemyScript[] enemies = room.GetComponentsInChildren<EnemyScript>();
             room.enemies = enemies;
             room.numOfEnemies = enemies.Length;
-            if (currentRoom != room)
-            {               
-                if (enemies != null)
-                {
-                    foreach (EnemyScript enemy in enemies)
-                    {
-                        enemy.notInRoom = true;
-                    }
-                }
-            }
-            else
+
+            if (enemies != null)
             {
-                if (enemies != null)
+                foreach (EnemyScript enemy in enemies)
                 {
-                    foreach (EnemyScript enemy in enemies)
-                    {
-                        enemy.notInRoom = false;
-                    }
+                    enemy.activeRoom = room.activeRoom;
                 }
             }
+
         }
     }
 

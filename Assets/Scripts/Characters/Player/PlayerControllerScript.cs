@@ -33,6 +33,8 @@ public class PlayerControllerScript : MonoBehaviour
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public float offsetCollision;
 
+    public RoomScript roomScript;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -249,13 +251,14 @@ public class PlayerControllerScript : MonoBehaviour
         print("");
     }
 
-    public void SetCenterOfRoom(Vector2 roomCenter)
+    public void SetCenterOfRoom(Vector2 roomCenter, RoomScript newRoomScript)
     {
 
         print("room center mag" + roomCenter.magnitude);
         print("player pos mag" + rb.position.magnitude);
         newRoomcenter = roomCenter;
         canMove = false;
+        roomScript = newRoomScript;
         enteringNewRoom = true;
     }
 
@@ -266,11 +269,17 @@ public class PlayerControllerScript : MonoBehaviour
         {
             rb.transform.position = Vector2.MoveTowards(transform.position, newRoomcenter, moveSpeed * Time.fixedDeltaTime);
         }
-        else{ 
-            canMove = true;
-            enteringNewRoom = false;
+        else{
+            ActivateRoom();
         }
 
+    }
+
+    public void ActivateRoom()
+    {
+        canMove = true;
+        enteringNewRoom = false;
+        roomScript.activeRoom = true;
     }
 
 

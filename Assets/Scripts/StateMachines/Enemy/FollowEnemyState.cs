@@ -43,7 +43,7 @@ public class FollowEnemyState : BaseState<EnemyStateManager.EnemyStates>
             return EnemyStateManager.EnemyStates.Dead;
         }
 
-        if (!enemyScript.notInRoom)
+        if (enemyScript.activeRoom)
         {
             if (movementEnemyScript.IsCloseToPlayer())
             {

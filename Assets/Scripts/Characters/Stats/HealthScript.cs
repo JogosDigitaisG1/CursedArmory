@@ -9,6 +9,11 @@ public class HealthScript : MonoBehaviour
     [SerializeField]
     private CharacterStatsScript characterStatsScript;
 
+    public SpriteRenderer spriteRenderer;
+    private DamageEffects damageEffects;
+
+    private bool canTakeDamage = true;
+
 
 
 
@@ -17,16 +22,74 @@ public class HealthScript : MonoBehaviour
        
         characterStatsScript = GetComponent<CharacterStatsScript>();
 
+        damageEffects = GetComponent<DamageEffects>();
+        if (damageEffects == null)
+        {
+            damageEffects = gameObject.AddComponent<DamageEffects>();
+        }
+
+    }
+    
+    public void TakeHit(int amount, List<AttackEffectType> attackEffects, Vector2 knockbackDirection, float knockbackForce, float knockbackDuration)
+    {
+
+        if (characterStatsScript != null && canTakeDamage)
+        {
+            foreach (var effect in attackEffects)
+            {
+                switch (effect)
+                {
+                    case AttackEffectType.Damage:
+                        TakeDamage(amount);
+                        break;
+                    case AttackEffectType.KnockBack:
+                        PerformKnockBack(knockbackDirection, knockbackForce, knockbackDuration);
+                        break;
+
+                    case AttackEffectType.Invincibility:
+                        GetTemporalInvincibility(0.5f, 0.1f);
+                        break;
+
+                    default:
+                        break;
+
+
+                }
+            }
+                
+
+        }
+    }
+
+    private void PerformKnockBack(Vector2 knockbackDirection, float knockbackForce, float knockbackDuration)
+    {
+        if (damageEffects != null)
+        {
+            damageEffects.ApplyKnockback(knockbackDirection, knockbackForce, knockbackDuration);
+        }
 
     }
 
-    public void TakeDamage(int amount)
+    private void GetTemporalInvincibility(float time, float blinkingTime)
     {
-        
+        canTakeDamage = false;
+        damageEffects.BlinkingCompleted += OnBlinkingCompleted;
+        damageEffects.StartBlinking(time, 0.1f, spriteRenderer);
+
+
+    }
+
+
+    private void OnBlinkingCompleted(bool success)
+    {
+        canTakeDamage = true;
+    }
+
+    private void TakeDamage(int amount)
+    {
         int currentHP = 0;
-        if (characterStatsScript != null)
-        {
-           // PlayHurtAnimation();
+
+
             currentHP = characterStatsScript.GetCurrentHp();
             currentHP -= amount;
 
@@ -35,15 +98,13 @@ public class HealthScript : MonoBehaviour
 
             characterStatsScript.SetCurrentHp(currentHP);
 
-            if(currentHP <= 0)
+            if (currentHP <= 0)
             {
                 characterStatsScript.Dead();
             }
-          //  ReturnAnimation();
-        }
+            //  ReturnAnimation();
+        
     }
-
-
 
     public void Dead()
     {

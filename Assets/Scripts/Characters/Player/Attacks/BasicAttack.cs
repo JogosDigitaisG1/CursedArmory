@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BasicAttack : MonoBehaviour, IPlayerAttack
@@ -50,7 +51,9 @@ public class BasicAttack : MonoBehaviour, IPlayerAttack
     {
         if ((basicAttackColliderX.IsTouching(collision) || basicAttackColliderY.IsTouching(collision)) && collision.gameObject.tag == TagsCons.enemyTag)
         {
-            collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(damage);
+            Vector2 knockbackDirection = ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
+            collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(damage, new List<AttackEffectType> { AttackEffectType.Damage,
+                AttackEffectType.KnockBack}, knockbackDirection, 5f, .8f);
             Debug.Log("collider hit enemy on childe trigger");
         }
     }
