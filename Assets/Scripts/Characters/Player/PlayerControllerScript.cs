@@ -15,12 +15,15 @@ public class PlayerControllerScript : MonoBehaviour
 
     private LookDirection lookDirection;
 
-    private CharacterStatsScript characterStats;
+    public CharacterStatsScript characterStats;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private float moveSpeed = 1f;
 
     public bool canMove = true;
+
+    public bool enteringNewRoom = false;
+    private Vector2 newRoomcenter = Vector2.zero;
 
     private Vector3 mouseVector = Vector3.zero;
 
@@ -29,6 +32,8 @@ public class PlayerControllerScript : MonoBehaviour
     public ContactFilter2D moveFilter;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public float offsetCollision;
+
+    public RoomScript roomScript;
 
     void Start()
     {
@@ -55,6 +60,11 @@ public class PlayerControllerScript : MonoBehaviour
                 }
             }
 
+        }
+
+        if (enteringNewRoom)
+        {
+            MoveToCenterOfRoom();
         }
 
 
@@ -240,5 +250,38 @@ public class PlayerControllerScript : MonoBehaviour
     {
         print("");
     }
+
+    public void SetCenterOfRoom(Vector2 roomCenter, RoomScript newRoomScript)
+    {
+
+        print("room center mag" + roomCenter.magnitude);
+        print("player pos mag" + rb.position.magnitude);
+        newRoomcenter = roomCenter;
+        canMove = false;
+        roomScript = newRoomScript;
+        enteringNewRoom = true;
+    }
+
+    public void MoveToCenterOfRoom()
+    {
+
+        if (rb.position.magnitude != newRoomcenter.magnitude)
+        {
+            rb.transform.position = Vector2.MoveTowards(transform.position, newRoomcenter, moveSpeed * Time.fixedDeltaTime);
+        }
+        else{
+            ActivateRoom();
+        }
+
+    }
+
+    public void ActivateRoom()
+    {
+        canMove = true;
+        enteringNewRoom = false;
+        roomScript.activeRoom = true;
+    }
+
+
 
 }

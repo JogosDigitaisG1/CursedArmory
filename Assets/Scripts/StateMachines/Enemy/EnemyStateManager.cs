@@ -46,7 +46,7 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
         States.Add(EnemyStates.Roam, new RoamEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, roamTimerMax));
         States.Add(EnemyStates.Follow, new FollowEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript));
         States.Add(EnemyStates.Attack, new AttackEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript));
-        States.Add(EnemyStates.Dead, new DeadEnemyState(animator, spriteRenderer));
+        States.Add(EnemyStates.Dead, new DeadEnemyState(animator, spriteRenderer, attackEnemyScript));
 
         // Set initial state
         CurrentState = States[(EnemyStates.Idle)];

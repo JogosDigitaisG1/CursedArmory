@@ -27,13 +27,14 @@ public class DungeonCrawlerControllerScript : MonoBehaviour
 
         for (int i = 0; i < dungeonData.numberOfCrawlers; i++)
         {
+
             dungeonCrawlers.Add(new DungeonCrawlerScript(Vector2Int.zero));
         }
 
         int iterations = Random.Range(dungeonData.iterationMin, dungeonData.iterationMax);
 
         for (int i = 0; i < iterations; i++)
-        {
+        { 
             foreach (DungeonCrawlerScript dungeonCrawler in dungeonCrawlers)
             {
                 Vector2Int newPos = dungeonCrawler.Move(directionMovementMap);

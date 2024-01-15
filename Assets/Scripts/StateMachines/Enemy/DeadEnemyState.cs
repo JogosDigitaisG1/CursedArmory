@@ -9,16 +9,18 @@ public class DeadEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private SpriteRenderer spriteRenderer;
     private DetectScript detectScript;
     private MovementEnemyScript movementEnemyScript;
+    private AttackEnemyScript attackEnemyScript;
 
-    public DeadEnemyState(Animator animator, SpriteRenderer spriteRenderer) : base(EnemyStateManager.EnemyStates.Dead)
+    public DeadEnemyState(Animator animator, SpriteRenderer spriteRenderer, AttackEnemyScript attackEnemyScript) : base(EnemyStateManager.EnemyStates.Dead)
     {
         this.animator = animator;
         this.spriteRenderer = spriteRenderer;
-
+        this.attackEnemyScript = attackEnemyScript;
     }
 
     public override void EnterState()
     {
+        attackEnemyScript.StopAttack();
         animator.Play(EnemyCons.DeadEnemy);
     }
 

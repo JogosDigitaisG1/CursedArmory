@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static DoorScript;
 
 public class RoomScript : MonoBehaviour
 {
     private PolygonCollider2D roomCollider;
     public GameObject virtualCameraParent;
-    private CinemachineConfiner2D virtualCameraConfiner;
+    public CinemachineConfiner2D virtualCameraConfiner;
     private GameObject player;
     private RoomControllerScript parentRoomController;
 
@@ -27,6 +28,9 @@ public class RoomScript : MonoBehaviour
     public DoorScript bottomDoor;
 
     public List<DoorScript> doors = new List<DoorScript>();
+
+    public EnemyScript[] enemies = null;
+    public int numOfEnemies = 0;
 
     private bool updatedDoors = false;
 
@@ -79,16 +83,21 @@ public class RoomScript : MonoBehaviour
 
         
 
-        if (GetRoomCenter().y == 0 && GetRoomCenter().x == 0)
+
+
+
+
+
+    }
+
+    public void StartGameMain()
+    {
+                if (GetRoomCenter().y == 0 && GetRoomCenter().x == 0)
         {
             virtualCameraParent.SetActive(true);
             parentRoomController.currentRoom = this;
             activeRoom = true;
         }
-
-
-
-
     }
 
     private void Update()
@@ -97,6 +106,36 @@ public class RoomScript : MonoBehaviour
         {
             RemoveUnconnectedDoors();
             updatedDoors = true;
+        }
+
+        if (activeRoom)
+        {
+            if (enemies != null)
+            {
+                numOfEnemies = enemies.Length;
+            }
+            else
+            {
+                numOfEnemies = 0;   
+            }
+
+            foreach (DoorScript door in doors)
+            {
+                
+
+                if (numOfEnemies > 0)
+                {
+                    door.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                }
+                else
+                {
+                    door.GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                }
+            }
+
+
+
+
         }
     }
 
@@ -192,30 +231,83 @@ public class RoomScript : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0));
     }
 
-    
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DoorCollisionDetected(DoorScript doorScript, Collider2D collision)
     {
-        if (collision.gameObject.tag == TagsCons.playerTag)
+        Debug.Log("door collided " + doorScript.doorType);
+        RoomScript newRoom = null;
+        if (activeRoom && numOfEnemies <= 0)
         {
-            //print("enter room " + gameObject.name);
-            virtualCameraParent.SetActive(true);
-            parentRoomController.currentRoom = this;
-            activeRoom = true;
-        }
-        
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.tag == TagsCons.playerTag)
-        {
-            //print("exit room " + gameObject.name);
+            
             virtualCameraParent.SetActive(false);
             activeRoom = false;
-            //.transform.position = Vector3.zero;
+
+            switch (doorScript.doorType)
+            {
+                case DoorType.left:
+                    newRoom = GetLeft();
+                    break;
+                case DoorType.right:
+                    newRoom = GetRight();
+                    break;
+                case DoorType.up:
+                    newRoom = GetTop();
+                    break;      
+                case DoorType.down:
+                    newRoom = GetBottom();
+                    break;
+                default:
+                    break;
+
+            }
+
+            parentRoomController.currentRoom = newRoom; 
+            newRoom.TurnOnCamera();
+            collision.gameObject.GetComponentInParent<PlayerControllerScript>().roomScript = newRoom;
+            collision.gameObject.GetComponentInParent<PlayerControllerScript>().SetCenterOfRoom(newRoom.GetRoomCenter(), newRoom);
         }
+
+       
+    }
+
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+
+    //    print("col with: " + this.gameObject.name);
+    //    if (collision.gameObject.tag == TagsCons.playerTag)
+    //    {
+    //        //print("enter room " + gameObject.name);
+    //        virtualCameraParent.SetActive(true);
+    //        parentRoomController.currentRoom = this;
+    //        activeRoom = true;
+
+            
+    //    }
         
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+
+    //    if (collision.gameObject.tag == TagsCons.playerTag)
+    //    {
+    //        //print("exit room " + gameObject.name);
+    //        print("player " + collision.gameObject.name);
+    //        virtualCameraParent.SetActive(false);
+    //        activeRoom = false;
+    //        //.transform.position = Vector3.zero;
+    //        //collision.gameObject.GetComponentInParent<PlayerControllerScript>().canMove = false;
+    //    }
+        
+    //}
+
+    public void TurnOnCamera()
+    {
+        virtualCameraParent.SetActive(true);
+    }
+
+    public void TurnOffCamera()
+    {
+        virtualCameraParent.SetActive(false);
     }
 }

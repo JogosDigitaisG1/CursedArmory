@@ -17,7 +17,7 @@ public class AnimationEventEnemyEvent : MonoBehaviour
 
     public void OnAttackStartFrame()
     {
-        attackEnemyScript.Attack(movementEnemyScript.GetEnemyLookDirection());
+        attackEnemyScript.Attack(movementEnemyScript.GetEnemyLookDirection(), movementEnemyScript.getPlayerPos());
     }
 
     public void OnDeadEnd()
