@@ -43,7 +43,7 @@ public class HealthScript : MonoBehaviour
                         TakeDamage(amount);
                         break;
                     case AttackEffectType.KnockBack:
-                        PerformKnockBack(knockbackDirection, knockbackForce, knockbackDuration);
+                      //  PerformKnockBack(knockbackDirection, knockbackForce, knockbackDuration);
                         break;
 
                     case AttackEffectType.Invincibility:
