@@ -7,6 +7,7 @@ using static MovementEnemyScript;
 public class AttackEnemyScript : MonoBehaviour
 {
 
+    [SerializeField]
     private bool isAttacking = false;
 
     public LayerMask attackColliderLayer;
@@ -26,8 +27,12 @@ public class AttackEnemyScript : MonoBehaviour
 
     public void Attack(EnemyLookDirection lookDirection, Vector3 playerPos)
     {
-        isAttacking = true;
         enemyTypeAttack.PerformAttack(lookDirection, playerPos);
+    }
+
+    public void StartAttackAnim()
+    {
+        isAttacking = true;
     }
 
 

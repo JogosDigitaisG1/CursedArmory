@@ -32,7 +32,6 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
     public override void ExitState()
     {
-        
     }
 
     public override EnemyStateManager.EnemyStates GetNextState()
@@ -48,17 +47,25 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
             {
                 return EnemyStateManager.EnemyStates.Attack;
             }
-            if (detectScript.DetectedPlayer())
+            if (!attackEnemyScript.IsAttacking())
             {
-                attackEnemyScript.StopAttack();
-                return EnemyStateManager.EnemyStates.Follow;
+                if (detectScript.DetectedPlayer())
+                {
+                    attackEnemyScript.StopAttack();
+                    return EnemyStateManager.EnemyStates.Follow;
+                }
+                else
+                {
+                    attackEnemyScript.StopAttack();
+                    movementEnemyScript.StopFollowPlayer();
+                    return EnemyStateManager.EnemyStates.Idle;
+                }
             }
             else
             {
-                attackEnemyScript.StopAttack();
-                movementEnemyScript.StopFollowPlayer();
-                return EnemyStateManager.EnemyStates.Idle;
+                return EnemyStateManager.EnemyStates.Attack;
             }
+           
         }
         else
         {

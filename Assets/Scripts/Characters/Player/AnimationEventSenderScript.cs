@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimationEventSenderScript : MonoBehaviour
@@ -8,6 +9,7 @@ public class AnimationEventSenderScript : MonoBehaviour
     private PlayerControllerScript _playerControllerScript;
     public AttackScript _attackScript;
     private HealthScript healthScript; 
+    public Canvas _canvas;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class AnimationEventSenderScript : MonoBehaviour
 
     public void OnDeadEnd()
     {
+        
+        _canvas.gameObject.SetActive(true);
         healthScript.Dead();
     }
 }

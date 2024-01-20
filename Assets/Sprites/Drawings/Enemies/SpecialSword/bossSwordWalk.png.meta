@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 776.5
-        width: 352
-        height: 776.5
+        y: 1137
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: bossSwordWalk_1
       rect:
         serializedVersion: 2
-        x: 352
-        y: 776.5
-        width: 352
-        height: 776.5
+        x: 564
+        y: 1137
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: bossSwordWalk_2
       rect:
         serializedVersion: 2
-        x: 704
-        y: 776.5
-        width: 352
-        height: 776.5
+        x: 1128
+        y: 1137
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,9 +177,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0.5
-        width: 352
-        height: 776.5
+        y: 0
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: bossSwordWalk_4
       rect:
         serializedVersion: 2
-        x: 352
-        y: 0.5
-        width: 352
-        height: 776.5
+        x: 564
+        y: 0
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: bossSwordWalk_5
       rect:
         serializedVersion: 2
-        x: 704
-        y: 0.5
-        width: 352
-        height: 776.5
+        x: 1128
+        y: 0
+        width: 564
+        height: 1137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

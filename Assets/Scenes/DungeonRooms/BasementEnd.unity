@@ -769,11 +769,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5848554772052646508, guid: d43e3d6ce4ee5024fb38afe7f5db41a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.43704867
+      value: 8.84
       objectReference: {fileID: 0}
     - target: {fileID: 5848554772052646508, guid: d43e3d6ce4ee5024fb38afe7f5db41a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11718118
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 5848554772052646508, guid: d43e3d6ce4ee5024fb38afe7f5db41a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   doors: []
   enemies: []
   numOfEnemies: 0
+  isBossRoom: 1
 --- !u!4 &1377133461
 Transform:
   m_ObjectHideFlags: 0
@@ -1277,13 +1278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1379455435}
-  spawnerData:
-  - name: Enemy1
-    spawnerData: {fileID: 11400000, guid: 9fb0c439a752ad54ca79efa1b89618dc, type: 2}
-  - name: Enemy2
-    spawnerData: {fileID: 11400000, guid: d717851865e478247a7d569c5a9d2aee, type: 2}
-  - name: ItemSpawner
-    spawnerData: {fileID: 11400000, guid: 828525acb1b0d1546adba10e94fa66e8, type: 2}
+  spawnerData: []
 --- !u!1 &1379455434
 GameObject:
   m_ObjectHideFlags: 0

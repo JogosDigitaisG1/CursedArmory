@@ -6,5 +6,6 @@ public enum PlayerAttackType
 {
     Basic,
     Slash,
+    Shoot
     
 }

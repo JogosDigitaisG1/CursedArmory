@@ -130,8 +130,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7602549505009287343}
   - component: {fileID: 1359893379219089810}
-  - component: {fileID: 3194420659248321143}
   - component: {fileID: 6441038413045323272}
+  - component: {fileID: 8440654439453701239}
   m_Layer: 0
   m_Name: StaffProjectile
   m_TagString: Untagged
@@ -182,20 +182,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3194420659248321143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3099057127576843112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6fe0f1663e1bf4fb1510a895eeca6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSO: {fileID: 11400000, guid: fa08b76dc35a9e946aeb2637425103c4, type: 2}
-  targetPos: {x: 0, y: 0}
 --- !u!114 &6441038413045323272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +195,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 4790304757903999164, guid: 63e6a1d18efee834f8927434c890bf90, type: 3}
+  projectileSO: {fileID: 11400000, guid: fa08b76dc35a9e946aeb2637425103c4, type: 2}
+--- !u!114 &8440654439453701239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099057127576843112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bfe45d5d4652943ad50df9f887df3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSO: {fileID: 11400000, guid: fa08b76dc35a9e946aeb2637425103c4, type: 2}
+  targetPos: {x: 0, y: 0}

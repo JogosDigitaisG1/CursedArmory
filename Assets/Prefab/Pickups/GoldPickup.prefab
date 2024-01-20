@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8218904521840192710}
   m_Layer: 0
   m_Name: GoldPickup
-  m_TagString: Pickup
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3586608028767758509}
   m_Layer: 0
   m_Name: PickupSprite
-  m_TagString: Pickup
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

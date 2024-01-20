@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultStats: {fileID: 11400000, guid: 7a077ddd5d6d8d54696b812906a48b13, type: 2}
-  baseStats:
+  maxStats:
     hp: 0
     attackPower: 0
     attackSpeed: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
+  mainBodyCollider: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!114 &6452142458107378167
 MonoBehaviour:
@@ -300,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106127d93056e6342b2bc61809472b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 5
+  detectRadius: 13
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -472,7 +473,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7054360321462770947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8465961514216320939}
-  - component: {fileID: 8747259555514445630}
+  - component: {fileID: 6910494065175367204}
   m_Layer: 0
   m_Name: ItemSpawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8747259555514445630
+--- !u!114 &6910494065175367204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2147255574016018373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09221c010b3d43b4b994f99e6afe5f44, type: 3}
+  m_Script: {fileID: 11500000, guid: 61be6ad11cece4443ae795aea4c026b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - gameObject: {fileID: 1978281819820898674, guid: f29c31beda1c38b45aefb6d371d28e09, type: 3}
-    weight: 0.2
-  - gameObject: {fileID: 722214766606407745, guid: 886d317b68aadc44092d6d2ad4fc8a53, type: 3}
-    weight: 0.6
-  - gameObject: {fileID: 6920314623687483351, guid: 5d12b2d1f3b764a4f9b05fcb06ad6185, type: 3}
-    weight: 0.1
+  gameObjectSpawner:
+    spawnables:
+    - item: {fileID: 1978281819820898674, guid: f29c31beda1c38b45aefb6d371d28e09, type: 3}
+      weight: 50
+    - item: {fileID: 722214766606407745, guid: 886d317b68aadc44092d6d2ad4fc8a53, type: 3}
+      weight: 70
+    - item: {fileID: 6920314623687483351, guid: 5d12b2d1f3b764a4f9b05fcb06ad6185, type: 3}
+      weight: 60
+    - item: {fileID: 5008463786837915623, guid: 018e7a98921301a4ca7ea2dc217bf5d3, type: 3}
+      weight: 40

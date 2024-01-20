@@ -5,12 +5,14 @@ public class MainMenu : MonoBehaviour
 {
     public void onPlayPress()
     {
-        SceneManager.LoadScene(ScenesCons.VILLAGE);
+        Loader.Load(ScenesCons.VILLAGE);
     }
 
     public void onCavePress()
     {
-        SceneManager.LoadScene(ScenesCons.BASEMENTMAIN);
+
+        Loader.Load(ScenesCons.BASEMENTMAIN);
+       
     }
 
     public void onQuitPress()

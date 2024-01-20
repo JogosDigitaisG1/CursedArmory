@@ -34,6 +34,8 @@ public class RoomScript : MonoBehaviour
 
     private bool updatedDoors = false;
 
+    public bool isBossRoom = false;
+
     public RoomScript(int x, int y) {
         X = x;
         Y = y;
@@ -108,34 +110,42 @@ public class RoomScript : MonoBehaviour
             updatedDoors = true;
         }
 
-        if (activeRoom)
+        if (activeRoom && numOfEnemies > 0)
         {
+            // Check if enemies array is not null before accessing its length
             if (enemies != null)
             {
                 numOfEnemies = enemies.Length;
             }
             else
             {
-                numOfEnemies = 0;   
+                // If enemies array is null, set numOfEnemies to 0
+                numOfEnemies = 0;
             }
 
+            
             foreach (DoorScript door in doors)
             {
                 
-
                 if (numOfEnemies > 0)
                 {
                     door.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                    door.GetComponentInChildren<SpriteRenderer>().sortingOrder = 10;
                 }
                 else
                 {
                     door.GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                    door.GetComponentInChildren<SpriteRenderer>().sortingOrder = 5;
                 }
             }
 
+            
 
+        }
 
-
+        if (isBossRoom && numOfEnemies <= 0)
+        {
+            print("game over");
         }
     }
 
@@ -143,7 +153,7 @@ public class RoomScript : MonoBehaviour
     {
         foreach (DoorScript door in doors)
         {
-            print(door);
+
             switch (door.doorType)
             {
                 
@@ -269,37 +279,6 @@ public class RoomScript : MonoBehaviour
        
     }
 
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-
-    //    print("col with: " + this.gameObject.name);
-    //    if (collision.gameObject.tag == TagsCons.playerTag)
-    //    {
-    //        //print("enter room " + gameObject.name);
-    //        virtualCameraParent.SetActive(true);
-    //        parentRoomController.currentRoom = this;
-    //        activeRoom = true;
-
-            
-    //    }
-        
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-
-    //    if (collision.gameObject.tag == TagsCons.playerTag)
-    //    {
-    //        //print("exit room " + gameObject.name);
-    //        print("player " + collision.gameObject.name);
-    //        virtualCameraParent.SetActive(false);
-    //        activeRoom = false;
-    //        //.transform.position = Vector3.zero;
-    //        //collision.gameObject.GetComponentInParent<PlayerControllerScript>().canMove = false;
-    //    }
-        
-    //}
 
     public void TurnOnCamera()
     {

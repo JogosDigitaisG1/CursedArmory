@@ -34,7 +34,6 @@ public class IdleEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
     public override void EnterState()
     {
-       
         animator.Play(EnemyCons.IdleEnemy);
 
     }

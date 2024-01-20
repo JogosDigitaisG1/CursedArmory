@@ -8,4 +8,6 @@ public static class ScenesCons
 
     public static string VILLAGE { get; } = "Village";
 
+    public static string LOADING { get; } = "Loading";
+
 }

@@ -25,13 +25,25 @@ public class ParentCollisionsScript : MonoBehaviour
     {
         AttackScript.OnChildTriggerEnter2D(collision);
 
-        if (collision.gameObject.tag == TagsCons.pickupTag && bodyCollider.IsTouching(collision))
+        if (bodyCollider.IsTouching(collision))
         {
-            Debug.Log("Got pickup");
-            _characterStatsScript.GetPickup(collision.gameObject.GetComponentInParent<PickupScript>().PickupSO);
-            
+            bool isPickup = collision.gameObject.tag == TagsCons.pickupTag && _characterStatsScript.BagNotFull();
+            bool isGold = collision.gameObject.tag == TagsCons.goldTag;
 
-                Destroy(collision.gameObject);
+            if (isPickup || isGold)
+            {
+                PickupScript pickupScript = collision.gameObject.GetComponentInParent<PickupScript>();
+                if (pickupScript != null)
+                {
+                    _characterStatsScript.GetPickup(pickupScript.PickupSO);
+                    Destroy(collision.transform.parent.gameObject);
+                    Debug.Log("Got pickup");
+                }
+                else
+                {
+                    Debug.LogWarning("PickupScript not found on the collided object.");
+                }
+            }
         }
     }
 }

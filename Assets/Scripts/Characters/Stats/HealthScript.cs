@@ -9,6 +9,8 @@ public class HealthScript : MonoBehaviour
     [SerializeField]
     private CharacterStatsScript characterStatsScript;
 
+    public Collider2D mainBodyCollider;
+
     public SpriteRenderer spriteRenderer;
     private DamageEffects damageEffects;
 
@@ -72,6 +74,11 @@ public class HealthScript : MonoBehaviour
 
     private void GetTemporalInvincibility(float time, float blinkingTime)
     {
+
+        if(mainBodyCollider != null)
+        {
+            mainBodyCollider.enabled = false;
+        }
         canTakeDamage = false;
         damageEffects.BlinkingCompleted += OnBlinkingCompleted;
         damageEffects.StartBlinking(time, 0.1f, spriteRenderer);
@@ -83,6 +90,10 @@ public class HealthScript : MonoBehaviour
     private void OnBlinkingCompleted(bool success)
     {
         canTakeDamage = true;
+        if (mainBodyCollider != null)
+        {
+            mainBodyCollider.enabled = true;
+        }
     }
 
     private void TakeDamage(int amount)
@@ -121,7 +132,7 @@ public class HealthScript : MonoBehaviour
             currentHP += amount;
 
             
-            int maxHP = characterStatsScript.GetMaxHp();
+            int maxHP = characterStatsScript.GetInGameMaxHp();
             currentHP = Mathf.Min(currentHP, maxHP);
 
             
@@ -131,14 +142,27 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+    public void RaiseInGameMaxHp(int amount)
+    {
+        if (characterStatsScript != null)
+        {
+            int currentInGameMaxHP = characterStatsScript.GetInGameMaxHp();
+            currentInGameMaxHP += amount;
+
+            characterStatsScript.SetInGameMaxHp(currentInGameMaxHP);
+        }
+    }
+
     public void RaiseMaxHp(int amount)
     {
         if (characterStatsScript != null)
         {
-            int currentMaxHP = characterStatsScript.GetMaxHp();
-            currentMaxHP += amount;
+            int maxHP = characterStatsScript.GetMaxHp();
+            maxHP += amount;
 
-            characterStatsScript.SetMaxtHp(currentMaxHP);
+            characterStatsScript.SetMaxHp(maxHP);
         }
     }
+
+
 }

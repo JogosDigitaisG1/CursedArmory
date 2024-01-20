@@ -27,13 +27,11 @@ public class FollowEnemyState : BaseState<EnemyStateManager.EnemyStates>
         animator.Play(EnemyCons.WalkEnemy);
         movementEnemyScript.FollowPlayerToggle(detectScript.GetPlayerCollider());
 
-       // Debug.Log("walk follow state");
         
     }
 
     public override void ExitState()
     {
-        
     }
 
     public override EnemyStateManager.EnemyStates GetNextState()

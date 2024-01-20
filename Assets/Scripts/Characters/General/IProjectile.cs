@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IProjectile
 {
 
-    void Shoot(Vector2 targetPos, float speed);
+    void Shoot(Vector2 targetPos);
 }
