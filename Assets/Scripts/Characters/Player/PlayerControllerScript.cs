@@ -254,8 +254,6 @@ public class PlayerControllerScript : MonoBehaviour
     public void SetCenterOfRoom(Vector2 roomCenter, RoomScript newRoomScript)
     {
 
-        print("room center mag" + roomCenter.magnitude);
-        print("player pos mag" + rb.position.magnitude);
         newRoomcenter = roomCenter;
         canMove = false;
         roomScript = newRoomScript;

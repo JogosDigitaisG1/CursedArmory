@@ -13,6 +13,7 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private CharacterStatsScript characterStatsScript;
     private EnemyScript enemyScript;
 
+
     public AttackEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript,
         AttackEnemyScript attackEnemyScript) : base(EnemyStateManager.EnemyStates.Attack)
     {
@@ -43,6 +44,10 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
         if (enemyScript.activeRoom)
         {
+            if (attackEnemyScript.attacks == 4 && enemyScript.hasSpecial)
+            {
+                return EnemyStateManager.EnemyStates.Special1;
+            }
             if (movementEnemyScript.IsCloseToPlayer())
             {
                 return EnemyStateManager.EnemyStates.Attack;

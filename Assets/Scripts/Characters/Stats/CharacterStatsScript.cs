@@ -358,27 +358,27 @@ public class CharacterStatsScript : MonoBehaviour
                     playerStats.AddSword();
                     playerStatsIngameMax.AddSword();
                     IncreseOnePowerPickup(2);
-                    Debug.Log("Swords " + playerStats.SwordSpirits);
+                    
 
                     break;
                 case var _ when pickupName == PickupCons.bow:
                     playerStats.AddBow();
-                    Debug.Log("bows " + playerStats.BowSpirits);
+                    
                     break;
                 case var _ when pickupName == PickupCons.staff:
                     playerStats.AddStaff();
                     playerStatsIngameMax.AddStaff();
-                    Debug.Log("Staff " + playerStats.StaffSpirits);
+                    
                     break;
                 case var _ when pickupName == PickupCons.shield:
                     playerStats.AddShield();
                     playerStatsIngameMax.AddShield();
                     RaiseInGameMaxHp(5);
-                    Debug.Log("Shield " + playerStats.ShieldSpirits);
+                    
                     break;
                 case var _ when pickupName == PickupCons.gold:
                     IncreaseOneGold();
-                    Debug.Log("Gold current" + playerStats.Gold);
+                    
                     break;
                 default:
                     Debug.Log("Pickup not found");

@@ -37,7 +37,6 @@ public class ParentCollisionsScript : MonoBehaviour
                 {
                     _characterStatsScript.GetPickup(pickupScript.PickupSO);
                     Destroy(collision.transform.parent.gameObject);
-                    Debug.Log("Got pickup");
                 }
                 else
                 {

@@ -194,10 +194,7 @@ public class MovementEnemyScript : MonoBehaviour
 
         }
 
-
-
     }
-
 
 
     private void MapAngleToFourDirections()

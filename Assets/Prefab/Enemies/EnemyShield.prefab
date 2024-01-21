@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482bab86ca0cc244dbd696fc1721b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStats: {fileID: 11400000, guid: 7a077ddd5d6d8d54696b812906a48b13, type: 2}
+  defaultStats: {fileID: 11400000, guid: 0589a1e351f89164f9227ad32bea1112, type: 2}
   maxStats:
     hp: 0
     attackPower: 0
@@ -537,6 +537,9 @@ MonoBehaviour:
   attackColliderLayer:
     serializedVersion: 2
     m_Bits: 0
+  attacks: 0
+  specialAttacks1: 0
+  specialAttacks2: 0
 --- !u!114 &2732010078904042378
 MonoBehaviour:
   m_ObjectHideFlags: 0

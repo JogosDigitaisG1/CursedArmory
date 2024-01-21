@@ -13,6 +13,10 @@ public class AttackEnemyScript : MonoBehaviour
     public LayerMask attackColliderLayer;
 
 
+    public int attacks = 0;
+    public int specialAttacks1 = 0;
+    public int specialAttacks2 = 0;
+
 
     [SerializeField]
     private IEnemyAttack enemyTypeAttack;
@@ -38,6 +42,7 @@ public class AttackEnemyScript : MonoBehaviour
 
     public void StopAttack()
     {
+        attacks++;
         isAttacking = false;
         enemyTypeAttack.StopAttack();
 

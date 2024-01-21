@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6622afa062b90c449d482e8b515a452, type: 3}
+  m_Name: SwordEasySpawner
+  m_EditorClassIdentifier: 
+  itemToSpawn: {fileID: 3676114518241581280, guid: de9bb548cfc5f4341a7e0d396bf32008, type: 3}
+  minSpawn: 0
+  maxSpawn: 1
