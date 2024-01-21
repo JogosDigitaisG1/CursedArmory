@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopItemSO : MonoBehaviour
+[CreateAssetMenu(fileName = "ShopItem.asset", menuName = "Shop/New Shop Item")]
+public class ShopItemSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string title;
+    public string description;
+    public string effectDescription;
+    public int cost;
+    public ShopItemEffectSO effects;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

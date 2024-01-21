@@ -15,6 +15,13 @@ public class MainMenu : MonoBehaviour
        
     }
 
+    public void onStorePress()
+    {
+
+        Loader.Load(ScenesCons.SHOP);
+
+    }
+
     public void onQuitPress()
     {
         Application.Quit();

@@ -13,13 +13,14 @@ public class StaffShootingScript : MonoBehaviour, IProjectile
 
         if (transform.position.x == targetPos.x && transform.position.y == targetPos.y)
         {
-            Instantiate(hitExplosion, transform.position, transform.rotation);
-            DestroyProjectile();
+            var effect = Instantiate(hitExplosion, transform.position, transform.rotation);
+            DestroyProjectile(effect);
         }
     }
      
-    private void DestroyProjectile()
+    private void DestroyProjectile(ParticleSystem particle)
     {
+        Destroy(particle.gameObject, 1.0f);
         Destroy(gameObject);
     }
 
@@ -29,8 +30,8 @@ public class StaffShootingScript : MonoBehaviour, IProjectile
         if (collision.gameObject.tag == TagsCons.playerTag)
         {
             print("porjectile hit");
-            Instantiate(hitExplosion, transform.position, transform.rotation);
-            DestroyProjectile();
+            var effect = Instantiate(hitExplosion, transform.position, transform.rotation);
+            DestroyProjectile(effect);
             collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(projectileSO.damage, new List<AttackEffectType> { AttackEffectType.Damage,
                 AttackEffectType.Invincibility }, Vector2.zero, 0f, 0f);
         }

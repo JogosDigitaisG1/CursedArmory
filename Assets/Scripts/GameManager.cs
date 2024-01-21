@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -149,5 +150,36 @@ public class GameManager : MonoBehaviour
         maxPlayerData = maxData;
     }
 
+    public int GetGold()
+    {
+        return maxPlayerData.Gold;
+    }
 
+    public void DecreaseGold(int price)
+    {
+        maxPlayerData.Gold -= price;
+
+        SyncStatsWithMax();
+
+    }
+
+    public PlayerStats GetMaxStats()
+    {
+        return maxPlayerData;
+    }
+
+    private void SyncStatsWithMax()
+    {
+        currentGameData = new PlayerStats(maxPlayerData);
+        playerInGameMaxData = new PlayerStats(maxPlayerData);
+    }
+
+    public void GetUpgrades(ShopItemEffectSO effect)
+    {
+        maxPlayerData.Hp += effect.healthIncrease;
+        maxPlayerData.AttackPower += effect.damageIncrease;
+        maxPlayerData.IncreaseBagCapacity(effect.capacityIncrease);
+
+        SyncStatsWithMax();
+    }
 }

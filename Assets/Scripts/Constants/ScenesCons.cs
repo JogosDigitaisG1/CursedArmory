@@ -10,4 +10,6 @@ public static class ScenesCons
 
     public static string LOADING { get; } = "Loading";
 
+    public static string SHOP { get; } = "Shop";
+
 }

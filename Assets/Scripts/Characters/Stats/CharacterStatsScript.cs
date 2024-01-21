@@ -404,10 +404,12 @@ public class CharacterStatsScript : MonoBehaviour
         if (swordsNum > 1) {
             halfSwords = swordsNum / 2;
             currentStats.AttackPower = currentStats.AttackPower - halfSwords * 2;
+            currentStats.DecreaseFromBag(halfSwords);
         }
         else if (swordsNum == 1)
         {
             halfSwords = 0;
+            currentStats.DecreaseFromBag(1);
             currentStats.AttackPower = currentStats.AttackPower - 2;
         }
 
@@ -421,12 +423,14 @@ public class CharacterStatsScript : MonoBehaviour
         if (staffNum > 1)
         {
             halfStaff = staffNum / 2;
-           // currentStats.AttackPower = currentStats.AttackPower - halfStaff * 2;
+            currentStats.DecreaseFromBag(halfStaff);
+            // currentStats.AttackPower = currentStats.AttackPower - halfStaff * 2;
         }
         else if (staffNum == 1)
         {
             halfStaff = 0;
-           // currentStats.AttackPower = currentStats.AttackPower - 2;
+            currentStats.DecreaseFromBag(1);
+            // currentStats.AttackPower = currentStats.AttackPower - 2;
         }
 
         currentStats.StaffSpirits = halfStaff;
@@ -441,10 +445,12 @@ public class CharacterStatsScript : MonoBehaviour
         {
             halfShield = shieldNum / 2;
             SetInGameMaxHp(currentStats.Hp - halfShield * 5);
+            currentStats.DecreaseFromBag(halfShield);
         }
         else if (shieldNum == 1)
         {
             halfShield = 0;
+            currentStats.DecreaseFromBag(1);
             SetInGameMaxHp(currentStats.Hp  - 5);
         }
 
