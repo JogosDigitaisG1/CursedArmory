@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 493997587080539138}
   - component: {fileID: 5032791419867039768}
   - component: {fileID: 8613995866136004758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 5357309555784326937}
   - component: {fileID: 1468601478931248270}
   - component: {fileID: 3794935908880397952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySword
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -249,7 +249,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultStats: {fileID: 11400000, guid: 7a077ddd5d6d8d54696b812906a48b13, type: 2}
-  baseStats:
+  maxStats:
+    hp: 0
+    attackPower: 0
+    attackSpeed: 0
+    moveSpeed: 0
+  inGameMaxStats:
     hp: 0
     attackPower: 0
     attackSpeed: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
     attackPower: 0
     attackSpeed: 0
     moveSpeed: 0
+  isPlayer: 0
   pickupPrefab: {fileID: 722214766606407745, guid: 886d317b68aadc44092d6d2ad4fc8a53, type: 3}
 --- !u!114 &6096472828749879958
 MonoBehaviour:
@@ -287,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
+  mainBodyCollider: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!114 &5458336151235126660
 MonoBehaviour:
@@ -370,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeRoom: 0
+  hasSpecial: 0
 --- !u!1 &4879688197342175721
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3857745076538845351}
   - component: {fileID: 4265710741457901495}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +466,7 @@ GameObject:
   - component: {fileID: 786567789571040783}
   - component: {fileID: 3290230704085061986}
   - component: {fileID: 2732010078904042378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyAttackCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -493,9 +501,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59e4e7a22c751f4ba2c8d6a7eb7bab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttacking: 0
   attackColliderLayer:
     serializedVersion: 2
     m_Bits: 0
+  attacks: 0
+  specialAttacks1: 0
+  specialAttacks2: 0
 --- !u!114 &2732010078904042378
 MonoBehaviour:
   m_ObjectHideFlags: 0

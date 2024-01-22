@@ -20,6 +20,7 @@ public class RoomControllerScript : MonoBehaviour
     string currentWorldName = "Basement";
     private RoomPercentageSpawnerScript roomPercentageSpawnerScript;
 
+
     RoomInfo currentRoomData;
 
     public RoomScript currentRoom;
@@ -32,6 +33,13 @@ public class RoomControllerScript : MonoBehaviour
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
     public bool gameStarted = false;
+
+    public Canvas canvas;
+    public GameObject gameOver;
+    public GameObject win;
+    public PlayerControllerScript playerControl;
+    public CharacterStatsScript playerStats;
+
 
 
     private void Awake()
@@ -75,6 +83,22 @@ public class RoomControllerScript : MonoBehaviour
                 gameStarted = true;
                 room.StartGameMain();
             }
+
+            playerControl.canMove = true;
+        }
+
+        if (currentRoom != null && currentRoom.name.Contains("End") && !(currentRoom.numOfEnemies > 0))
+        {
+            GameManager.Instance.defeatedBoss = true;
+            canvas.gameObject.SetActive(true);
+            playerControl.canMove = false;
+            win.SetActive(true);
+            Debug.Log("Boxx dead");
+        }
+
+        if (!playerStats.IsAlive())
+        {
+            gameOver.SetActive(true);
         }
     }
 
@@ -146,20 +170,41 @@ public class RoomControllerScript : MonoBehaviour
         }
     }
 
+    //public void LoadRoom(string name, int x, int y)
+    //{
+    //    if(DoesRoomExist(x, y))
+    //    {
+    //        return;
+    //    }
+
+    //    RoomInfo newRoomData = new RoomInfo();
+
+    //    newRoomData.name = name;
+    //    newRoomData.x = x;  
+    //    newRoomData.y = y;
+
+    //    loadRoomQueue.Enqueue(newRoomData);
+    //}
+
     public void LoadRoom(string name, int x, int y)
     {
-        if(DoesRoomExist(x, y))
+        if (DoesRoomExist(x, y))
         {
             return;
         }
 
-        RoomInfo newRoomData = new RoomInfo();
+        string activeSceneName = SceneManager.GetActiveScene().name;
+        string roomName = currentWorldName + name;
 
-        newRoomData.name = name;
-        newRoomData.x = x;  
-        newRoomData.y = y;
+        if (activeSceneName != roomName)
+        {
+            RoomInfo newRoomData = new RoomInfo();
+            newRoomData.name = name;
+            newRoomData.x = x;
+            newRoomData.y = y;
 
-        loadRoomQueue.Enqueue(newRoomData);
+            loadRoomQueue.Enqueue(newRoomData);
+        }
     }
 
     //IEnumerator LoadRoomRoutine(RoomInfo info)
@@ -177,23 +222,16 @@ public class RoomControllerScript : MonoBehaviour
 
     IEnumerator LoadRoomRoutine(RoomInfo info)
     {
-        // Unload all currently loaded scenes except the "Main" scene
-        for (int i = SceneManager.sceneCount - 1; i > 0 ; i--)
-        {
-
-            Debug.Log("scene loaded " + SceneManager.GetSceneAt(i).name);
-            Scene scene = SceneManager.GetSceneAt(i);
-            if (!scene.name.Contains("Main"))
-            {
-                yield return SceneManager.UnloadSceneAsync(scene);
-            }
-        }
-
         string roomName = currentWorldName + info.name;
 
+        // Unload the previous scene
+        if (SceneManager.GetSceneByName(roomName).isLoaded)
+            yield return SceneManager.UnloadSceneAsync(roomName);
+
+        // Load the new scene
         AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
 
-        while (loadRoom.isDone == false)
+        while (!loadRoom.isDone)
         {
             yield return null;
         }

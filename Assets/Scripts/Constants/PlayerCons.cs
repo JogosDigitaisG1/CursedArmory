@@ -11,6 +11,7 @@ public static class PlayerCons
     public static string attackAnim { get; } = "attackPlayer";
     public static string deadAnim { get; } = "deadPlayer";
     public static string slashAnim { get; } = "slashAnim";
+    public static string specialAnim { get; } = "SpecialAttackSlash";
     public static string noSlash { get; } = "noSlash";
 
 

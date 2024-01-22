@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6869820635328059463}
   - component: {fileID: 3002162429938570712}
   - component: {fileID: 6435418288705678068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyAttackCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -45,9 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59e4e7a22c751f4ba2c8d6a7eb7bab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttacking: 0
   attackColliderLayer:
     serializedVersion: 2
     m_Bits: 0
+  attacks: 0
+  specialAttacks1: 0
+  specialAttacks2: 0
 --- !u!114 &6435418288705678068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBtwShots: 0
-  startTimeBtwShots: 0.5
+  startTimeBtwShots: 1
   proyectile: {fileID: 3099057127576843112, guid: c754185a84c286247882fa8c32e608e0, type: 3}
 --- !u!1 &2617510096669523050
 GameObject:
@@ -76,7 +80,7 @@ GameObject:
   - component: {fileID: 6481780128221027226}
   - component: {fileID: 7730802905175099665}
   - component: {fileID: 1870441759260355697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -248,7 +252,7 @@ GameObject:
   - component: {fileID: 7965180477852087167}
   - component: {fileID: 6700929122585082643}
   - component: {fileID: 1080835269778623320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyStaff
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -312,7 +316,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultStats: {fileID: 11400000, guid: 6498b3cfaf4ed304dadb703ebf4ac280, type: 2}
-  baseStats:
+  maxStats:
+    hp: 0
+    attackPower: 0
+    attackSpeed: 0
+    moveSpeed: 0
+  inGameMaxStats:
     hp: 0
     attackPower: 0
     attackSpeed: 0
@@ -322,7 +331,8 @@ MonoBehaviour:
     attackPower: 0
     attackSpeed: 0
     moveSpeed: 0
-  pickupPrefab: {fileID: 722214766606407745, guid: 886d317b68aadc44092d6d2ad4fc8a53, type: 3}
+  isPlayer: 0
+  pickupPrefab: {fileID: 5008463786837915623, guid: 018e7a98921301a4ca7ea2dc217bf5d3, type: 3}
 --- !u!114 &1482927144720076124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
+  mainBodyCollider: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!114 &3017940409966440797
 MonoBehaviour:
@@ -433,3 +444,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeRoom: 1
+  hasSpecial: 0

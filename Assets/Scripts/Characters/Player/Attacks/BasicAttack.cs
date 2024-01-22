@@ -6,16 +6,18 @@ using UnityEngine;
 public class BasicAttack : MonoBehaviour, IPlayerAttack
 {
     public Collider2D basicAttackColliderX;
-    public Collider2D basicAttackColliderY;
+    public Collider2D basicAttackColliderYTop;
+    public Collider2D basicAttackColliderYBot;
     private Vector2 XAttackOffset;
     private Vector2 YAttackOffset;
 
     private void Start()
     {
         XAttackOffset = basicAttackColliderX.transform.localPosition;
-        YAttackOffset = basicAttackColliderY.transform.localPosition;
+        YAttackOffset = basicAttackColliderYTop.transform.localPosition;
         basicAttackColliderX.enabled = false;
-        basicAttackColliderY.enabled = false;
+        basicAttackColliderYBot.enabled = false;
+        basicAttackColliderYTop.enabled = false;
     }
 
     public PlayerAttackType GetAttackType()
@@ -25,8 +27,8 @@ public class BasicAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackDown()
     {
-        basicAttackColliderY.enabled = true;
-        basicAttackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y * -1);
+        basicAttackColliderYBot.enabled = true;
+        //basicAttackColliderYTop.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y * -1);
     }
 
     public void PerformAttackLeft()
@@ -43,13 +45,13 @@ public class BasicAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackUp()
     {
-        basicAttackColliderY.enabled = true;
-        basicAttackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y);
+        basicAttackColliderYTop.enabled = true;
+        //basicAttackColliderYTop.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y);
     }
 
     public void OnChildTriggerEnter2D(Collider2D collision, int damage)
     {
-        if ((basicAttackColliderX.IsTouching(collision) || basicAttackColliderY.IsTouching(collision)) && collision.gameObject.tag == TagsCons.enemyTag)
+        if ((basicAttackColliderX.IsTouching(collision) || basicAttackColliderYTop.IsTouching(collision)) && collision.gameObject.tag == TagsCons.enemyTag)
         {
             Vector2 knockbackDirection = ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
             collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(damage, new List<AttackEffectType> { AttackEffectType.Damage,
@@ -61,6 +63,7 @@ public class BasicAttack : MonoBehaviour, IPlayerAttack
     public void StopAttack()
     {
         basicAttackColliderX.enabled = false;
-        basicAttackColliderY.enabled = false;
+        basicAttackColliderYTop.enabled = false;
+        basicAttackColliderYBot.enabled = false;
     }
 }

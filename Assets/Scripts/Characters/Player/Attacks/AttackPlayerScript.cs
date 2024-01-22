@@ -20,6 +20,7 @@ public class AttackScript : MonoBehaviour
     public bool slash = false;
     public bool shoot = false;
     public bool basic = false;
+    public bool special = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,23 +33,12 @@ public class AttackScript : MonoBehaviour
     private void Update()
     {
 
-        if (characterStatsScript.GetNumberOfSwords() >= 5)
-        {
-            ToggleAttack(PlayerAttackType.Slash, true);
-        }
-        else
-        {
-            ToggleAttack(PlayerAttackType.Slash, false);
-        }
+        ToggleAttack(PlayerAttackType.Slash, characterStatsScript.GetNumberOfSwords() >= 5);
 
-        if (characterStatsScript.GetNumberOfStaffs() >= 5)
-        {
-            ToggleAttack(PlayerAttackType.Shoot, true);
-        }
-        else
-        {
-            ToggleAttack(PlayerAttackType.Shoot, false);
-        }
+
+        ToggleAttack(PlayerAttackType.Shoot, characterStatsScript.GetNumberOfStaffs() >= 5);
+
+        ToggleAttack(PlayerAttackType.Special, GameManager.Instance.defeatedBoss);
 
 
 

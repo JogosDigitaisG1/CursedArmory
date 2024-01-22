@@ -35,5 +35,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 63c95da4a2f04df42993141075441d63
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/BasementBasic2.unity
+    guid: 225fd9fdc8eab4247bd4a2f33522d40f
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/BasementBasic3.unity
+    guid: 00b41b1a8a94ea341b621981d5210667
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d45c332dc04a78a4f8df4671a2a5381b, type: 2}

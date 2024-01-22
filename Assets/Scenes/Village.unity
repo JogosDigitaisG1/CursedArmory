@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -668, y: 352}
+  m_AnchoredPosition: {x: -214, y: 138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82960618
@@ -187,6 +187,63 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &243251347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.8665869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.85337347
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.018850762
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695532608856529827, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022279764608640173, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
+      propertyPath: m_Name
+      value: Loader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 815bac8be3138094ab1e1a318e514718, type: 3}
 --- !u!1 &396947033
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +552,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 150}
+  m_SizeDelta: {x: 278.293, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658595512
 MonoBehaviour:
@@ -749,7 +806,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 150}
+  m_SizeDelta: {x: 291.522, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726240966
 MonoBehaviour:
@@ -1537,7 +1594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 414, y: -136}
+  m_AnchoredPosition: {x: 494, y: -137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616134862
@@ -1625,7 +1682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3c21b41202ba63e49b4c7521d67afbad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58c99b47316f16d4b85afc2849d05116, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2009,3 +2066,4 @@ SceneRoots:
   - {fileID: 2013491467}
   - {fileID: 1008856840}
   - {fileID: 663333580}
+  - {fileID: 243251347}

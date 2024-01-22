@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string activeDungeonName = "";
 
+    public bool defeatedBoss = false;
     private void Awake()
     {
         if (_instance != null && _instance != this)

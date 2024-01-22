@@ -5,20 +5,20 @@ public class MainMenu : MonoBehaviour
 {
     public void onPlayPress()
     {
-        Loader.Load(ScenesCons.VILLAGE);
+        Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.GAME);
     }
 
     public void onCavePress()
     {
 
-        Loader.Load(ScenesCons.BASEMENTMAIN);
+        Loader.Instance.Load(ScenesCons.BASEMENTMAIN, ScenesCons.VILLAGE);
        
     }
 
     public void onStorePress()
     {
 
-        Loader.Load(ScenesCons.SHOP);
+        Loader.Instance.Load(ScenesCons.SHOP, ScenesCons.VILLAGE);
 
     }
 

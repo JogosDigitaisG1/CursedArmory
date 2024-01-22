@@ -12,4 +12,6 @@ public static class ScenesCons
 
     public static string SHOP { get; } = "Shop";
 
+    public static string GAME { get; } = "Main Menu";
+
 }

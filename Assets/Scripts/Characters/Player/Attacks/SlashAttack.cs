@@ -48,6 +48,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
         slashAttackColliderX.enabled = true;
         spriteRendererX.enabled = true;
         //animatorX.enabled = true;
+        spriteRendererX.flipX = true;
         animatorX.Play(PlayerCons.slashAnim);
         slashAttackColliderX.transform.localPosition = new Vector3(XAttackOffset.x * -1, XAttackOffset.y);
     }
@@ -57,6 +58,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
         slashAttackColliderX.enabled = true;
         spriteRendererX.enabled = true;
         //animatorX.enabled = true;
+        spriteRendererX.flipX = false;
         animatorX.Play(PlayerCons.slashAnim);
         slashAttackColliderX.transform.localPosition = XAttackOffset;
     }
@@ -76,7 +78,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
         spriteRendererY.enabled = true;
         //animatorY.enabled = true;
         animatorY.Play(PlayerCons.slashAnim);
-        slashAttackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y * -1);
+        slashAttackColliderY.transform.localPosition = new Vector3(YAttackOffset.x, (YAttackOffset.y * -1) - 1);
     }
 
     public void StopAttack()

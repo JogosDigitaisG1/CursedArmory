@@ -92,6 +92,7 @@ public class CharacterStatsScript : MonoBehaviour
         DecreaseHalfShield((PlayerStats)inGameMaxStats);
         DecreaseHalfStaff((PlayerStats)inGameMaxStats);
         DecreaseHalfSword((PlayerStats)inGameMaxStats);
+        DecreaseHalfGold();
 
         currentStats = new PlayerStats((PlayerStats)inGameMaxStats); 
 
@@ -357,7 +358,7 @@ public class CharacterStatsScript : MonoBehaviour
 
                     playerStats.AddSword();
                     playerStatsIngameMax.AddSword();
-                    IncreseOnePowerPickup(2);
+                    IncreseOnePowerPickup(5);
                     
 
                     break;
@@ -367,13 +368,15 @@ public class CharacterStatsScript : MonoBehaviour
                     break;
                 case var _ when pickupName == PickupCons.staff:
                     playerStats.AddStaff();
+                    IncreseOnePowerPickup(2);
+                    RaiseInGameMaxHp(5);
                     playerStatsIngameMax.AddStaff();
                     
                     break;
                 case var _ when pickupName == PickupCons.shield:
                     playerStats.AddShield();
                     playerStatsIngameMax.AddShield();
-                    RaiseInGameMaxHp(5);
+                    RaiseInGameMaxHp(10);
                     
                     break;
                 case var _ when pickupName == PickupCons.gold:
@@ -403,14 +406,14 @@ public class CharacterStatsScript : MonoBehaviour
         int halfSwords = 0;
         if (swordsNum > 1) {
             halfSwords = swordsNum / 2;
-            currentStats.AttackPower = currentStats.AttackPower - halfSwords * 2;
+            currentStats.AttackPower = currentStats.AttackPower - halfSwords * 5;
             currentStats.DecreaseFromBag(halfSwords);
         }
         else if (swordsNum == 1)
         {
             halfSwords = 0;
             currentStats.DecreaseFromBag(1);
-            currentStats.AttackPower = currentStats.AttackPower - 2;
+            currentStats.AttackPower = currentStats.AttackPower - 5;
         }
 
         currentStats.SwordSpirits = halfSwords;
@@ -423,12 +426,16 @@ public class CharacterStatsScript : MonoBehaviour
         if (staffNum > 1)
         {
             halfStaff = staffNum / 2;
+            SetInGameMaxHp(currentStats.Hp - halfStaff * 5);
+            currentStats.AttackPower = currentStats.AttackPower - halfStaff * 2;
             currentStats.DecreaseFromBag(halfStaff);
             // currentStats.AttackPower = currentStats.AttackPower - halfStaff * 2;
         }
         else if (staffNum == 1)
         {
             halfStaff = 0;
+            currentStats.AttackPower = currentStats.AttackPower - 2;
+            SetInGameMaxHp(currentStats.Hp - 5);
             currentStats.DecreaseFromBag(1);
             // currentStats.AttackPower = currentStats.AttackPower - 2;
         }
@@ -444,21 +451,24 @@ public class CharacterStatsScript : MonoBehaviour
         if (shieldNum > 1)
         {
             halfShield = shieldNum / 2;
-            SetInGameMaxHp(currentStats.Hp - halfShield * 5);
+            SetInGameMaxHp(currentStats.Hp - halfShield * 10);
             currentStats.DecreaseFromBag(halfShield);
         }
         else if (shieldNum == 1)
         {
             halfShield = 0;
             currentStats.DecreaseFromBag(1);
-            SetInGameMaxHp(currentStats.Hp  - 5);
+            SetInGameMaxHp(currentStats.Hp  - 10);
         }
 
         currentStats.ShieldSpirits = halfShield;
 
-        
-        
+    }
 
+    public void DecreaseHalfGold()
+    {
+
+        DecreaseGold(GetGold() / 2);
     }
 
     public bool BagNotFull()

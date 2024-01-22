@@ -46,11 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectSpawner:
     spawnables:
-    - item: {fileID: 1978281819820898674, guid: f29c31beda1c38b45aefb6d371d28e09, type: 3}
-      weight: 50
     - item: {fileID: 722214766606407745, guid: 886d317b68aadc44092d6d2ad4fc8a53, type: 3}
-      weight: 70
+      weight: 30
     - item: {fileID: 6920314623687483351, guid: 5d12b2d1f3b764a4f9b05fcb06ad6185, type: 3}
-      weight: 60
+      weight: 30
     - item: {fileID: 5008463786837915623, guid: 018e7a98921301a4ca7ea2dc217bf5d3, type: 3}
-      weight: 40
+      weight: 30
+    - item: {fileID: 5850002870133773486, guid: 6836f35f81b72f64eaf3740b55db58c6, type: 3}
+      weight: 70
+    - item: {fileID: 5850002870133773486, guid: 6836f35f81b72f64eaf3740b55db58c6, type: 3}
+      weight: 70

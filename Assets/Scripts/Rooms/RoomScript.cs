@@ -110,7 +110,7 @@ public class RoomScript : MonoBehaviour
             updatedDoors = true;
         }
 
-        if (activeRoom && numOfEnemies > 0)
+        if (activeRoom)
         {
             // Check if enemies array is not null before accessing its length
             if (enemies != null)

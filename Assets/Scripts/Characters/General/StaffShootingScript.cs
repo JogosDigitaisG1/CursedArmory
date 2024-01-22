@@ -29,7 +29,7 @@ public class StaffShootingScript : MonoBehaviour, IProjectile
     {
         if (collision.gameObject.tag == TagsCons.playerTag)
         {
-            print("porjectile hit");
+
             var effect = Instantiate(hitExplosion, transform.position, transform.rotation);
             DestroyProjectile(effect);
             collision.gameObject.GetComponentInParent<HealthScript>().TakeHit(projectileSO.damage, new List<AttackEffectType> { AttackEffectType.Damage,

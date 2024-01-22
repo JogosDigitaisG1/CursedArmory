@@ -20,7 +20,7 @@ public class PlayerControllerScript : MonoBehaviour
     private Vector2 moveInput;
     private float moveSpeed = 1f;
 
-    public bool canMove = true;
+    public bool canMove = false;
 
     public bool enteringNewRoom = false;
     private Vector2 newRoomcenter = Vector2.zero;
@@ -40,7 +40,7 @@ public class PlayerControllerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         characterStats = GetComponent<CharacterStatsScript>();
         attackScript = GetComponentInChildren<AttackScript>();
-        
+        canMove = false;
     }
 
     void FixedUpdate()

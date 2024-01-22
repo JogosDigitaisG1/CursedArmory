@@ -7,20 +7,24 @@ public class SceneChooserScript : MonoBehaviour
 
     public CharacterStatsScript _characterStatsScript;
 
+    public GameObject gameOver;
+    public GameObject win;
+
     private void Awake()
     {
         gameObject.SetActive(false);
+        win.SetActive(false);
     }
     public void GoToVillage()
     {
         _characterStatsScript.StatsAfterChangeScene();
-        Loader.Load(ScenesCons.VILLAGE);
+        Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.BASEMENTMAIN);
     }
 
 
     public void Reset()
     {
         _characterStatsScript.StatsAfterDeathRestart();
-        Loader.Load(ScenesCons.BASEMENTMAIN);
+        Loader.Instance.Load(ScenesCons.BASEMENTMAIN, ScenesCons.BASEMENTMAIN);
     }
 }
