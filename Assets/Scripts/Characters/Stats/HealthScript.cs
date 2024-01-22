@@ -108,7 +108,6 @@ public class HealthScript : MonoBehaviour
 
     public void Dead()
     {
-
         Destroy(gameObject);
     }
 
