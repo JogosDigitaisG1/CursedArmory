@@ -22,10 +22,12 @@ public class GameManager : MonoBehaviour
     private bool activeDungeon = false;
 
     [SerializeField]
-    private bool startedDungeon = false;
+    public bool startedDungeon = false;
 
     [SerializeField]
     private string activeDungeonName = "";
+
+    public bool bossSpawned = false;
 
     public bool defeatedBoss = false;
     private void Awake()

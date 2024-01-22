@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3007556d7151094fa09b6d773eef77b, type: 3}
-  m_Name: PhoenixBag
+  m_Name: MoonStoneBag
   m_EditorClassIdentifier: 
-  title: Phoenix Bag
-  description: Bag made out of a phoenix's feathers
-  effectDescription: +100 hp
-  cost: 30
-  effects: {fileID: 11400000, guid: 0573c32a37b7b1a4ab518fd8dff1fdd7, type: 2}
+  title: Moon Stone Bag
+  description: Can hold more items, because it reduces their gravity
+  effectDescription: +10 capacity
+  cost: 5
+  effects: {fileID: 11400000, guid: 389e684d5605a2c45b63ee2039bdfd6c, type: 2}

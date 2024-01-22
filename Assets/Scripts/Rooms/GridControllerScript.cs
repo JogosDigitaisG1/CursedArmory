@@ -22,8 +22,8 @@ public class GridControllerScript : MonoBehaviour
     private void Awake()
     {
         room = GetComponentInParent<RoomScript>();
-        grid.cols = room.width - 2; 
-        grid.rows = room.height - 2;
+        grid.cols = room.width - 4; 
+        grid.rows = room.height - 4;
         GenerateGrid();
     }
 
@@ -40,7 +40,12 @@ public class GridControllerScript : MonoBehaviour
                     new Vector2(x - (grid.cols - grid.horizontalOffset), 
                     y - (grid.rows - grid.verticalOffset));
 
+                Debug.Log("vertical offset " + grid.verticalOffset);
+                Debug.Log("horizontal offset " + grid.horizontalOffset);
+                
+
                 go.name = "X: " + x + ", Y: " + y;
+                Debug.Log(go.name);
                 availablePoints.Add(go.transform.position);
                 go.SetActive(false);
             }

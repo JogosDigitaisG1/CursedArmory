@@ -82,9 +82,14 @@ public class Loader : MonoBehaviour
 
         // Load the target scene additively
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        while (!sceneLoad.isDone)
+        while (!sceneLoad.isDone && !sceneName.Contains("Basement"))
         {
             float progress = Mathf.Clamp01(sceneLoad.progress / 0.9f);
+            yield return null;
+        }
+
+        while (sceneName.Contains("Basement") && !GameManager.Instance.bossSpawned)
+        {
             yield return null;
         }
 
@@ -96,4 +101,49 @@ public class Loader : MonoBehaviour
 
     }
 
+    public void RestartScene(string sceneName)
+    {
+        StartCoroutine(RestartSceneCoroutine(sceneName));
+    }
+
+    private IEnumerator RestartSceneCoroutine(string sceneName)
+    {
+        // Load the loading screen scene additively
+        yield return SceneManager.LoadSceneAsync(loadingScreenSceneName, LoadSceneMode.Additive);
+
+        // Ensure a minimum loading screen time
+        float elapsedTime = 0f;
+        while (elapsedTime < minLoadingScreenTime)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+
+
+        // Unload the current scene
+        yield return SceneManager.UnloadSceneAsync(sceneName);
+
+        // Load the target scene additively
+        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        while (!sceneLoad.isDone)
+        {
+            float progress = Mathf.Clamp01(sceneLoad.progress / 0.9f);
+            // Optionally, update any loading progress UI here
+            yield return null;
+        }
+
+        while (sceneName.Contains("Basement") && !GameManager.Instance.bossSpawned)
+        {
+            yield return null;
+        }
+
+        // Activate the loaded scene
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+        // Unload the loading screen scene
+        yield return SceneManager.UnloadSceneAsync(loadingScreenSceneName);
+    }
 }
+
+

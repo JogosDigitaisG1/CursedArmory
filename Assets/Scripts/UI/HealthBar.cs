@@ -27,6 +27,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
+        healthSlider.maxValue = characterStatsScript.GetMaxHp();
         healthSlider.value = characterStatsScript.GetCurrentHp();
     }
 }

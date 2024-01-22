@@ -40,6 +40,7 @@ public class RoomControllerScript : MonoBehaviour
     public PlayerControllerScript playerControl;
     public CharacterStatsScript playerStats;
 
+    public Canvas ui;
 
 
     private void Awake()
@@ -57,13 +58,17 @@ public class RoomControllerScript : MonoBehaviour
 
        // roomPercentageSpawnerScript = GetComponent<RoomPercentageSpawnerScript>();
 
-
+        
 
     }
 
 
     private void Update()
     {
+        GameManager.Instance.bossSpawned = spawnedBossRoom;
+        ui.gameObject.SetActive(spawnedBossRoom && GameManager.Instance.startedDungeon);
+
+
         UpdateRoomQueue();
 
         //foreach (RoomScript room in loadedRooms)
@@ -207,18 +212,7 @@ public class RoomControllerScript : MonoBehaviour
         }
     }
 
-    //IEnumerator LoadRoomRoutine(RoomInfo info)
-    //{
-    //    string roomName = currentWorldName + info.name;
 
-    //    AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName,
-    //        LoadSceneMode.Additive);
-
-    //    while(loadRoom.isDone == false)
-    //    {
-    //        yield return null;
-    //    }
-    //}
 
     IEnumerator LoadRoomRoutine(RoomInfo info)
     {
@@ -235,7 +229,10 @@ public class RoomControllerScript : MonoBehaviour
         {
             yield return null;
         }
+
+       
     }
+
 
     public void RegisterRoom(RoomScript room)
     {

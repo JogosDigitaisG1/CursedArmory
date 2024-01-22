@@ -2078,8 +2078,8 @@ MonoBehaviour:
   grid:
     cols: 0
     rows: 0
-    verticalOffset: 7
-    horizontalOffset: 13
+    verticalOffset: 6
+    horizontalOffset: 12
   gridTile: {fileID: 6619147406131806490, guid: fe1fa72794fb2864ca1fda7d046f14b1, type: 3}
   availablePoints: []
 --- !u!1660057539 &9223372036854775807

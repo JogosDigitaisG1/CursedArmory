@@ -44,13 +44,15 @@ public class DisplayStats : MonoBehaviour
 
     void Update()
     {
+
+
         int gold = characterStatsScript.GetCurrentPlayerStats().Gold;
         int swords = characterStatsScript.GetCurrentPlayerStats().SwordSpirits;
         int shields = characterStatsScript.GetCurrentPlayerStats().ShieldSpirits;
         int staffs = characterStatsScript.GetCurrentPlayerStats().StaffSpirits;
         int bows = characterStatsScript.GetCurrentPlayerStats().BowSpirits;
         int bagFilled = characterStatsScript.GetCurrentPlayerStats().BagActualCapacity;
-        int bagCapacity = characterStatsScript.GetCurrentPlayerStats().BagMaxCapacity;
+        int bagCapacity = characterStatsScript.GetCurrentPlayerStats().GetBagMaxCapacity();
 
         goldText.text = gold.ToString();
         swordsText.text = swords.ToString();

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3007556d7151094fa09b6d773eef77b, type: 3}
-  m_Name: PhoenixBag
+  m_Name: swiss army bag
   m_EditorClassIdentifier: 
-  title: Phoenix Bag
-  description: Bag made out of a phoenix's feathers
-  effectDescription: +100 hp
-  cost: 30
-  effects: {fileID: 11400000, guid: 0573c32a37b7b1a4ab518fd8dff1fdd7, type: 2}
+  title: swiss army bag
+  description: The most versatile bag
+  effectDescription: +2 capacity +10 hp +3 damage
+  cost: 20
+  effects: {fileID: 11400000, guid: 4d7b2231544c95e46ba707babbf3ec51, type: 2}

@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
-  mainBodyCollider: {fileID: 0}
+  mainBodyCollider: {fileID: 7524292404977129113}
   spriteRenderer: {fileID: 0}
 --- !u!114 &6452142458107378167
 MonoBehaviour:
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 7447144346881193758}
-  mainCollider: {fileID: 0}
+  mainCollider: {fileID: 7524292404977129113}
   parentTransform: {fileID: 5848554772052646508}
   speed: 5
   isAttacking: 0

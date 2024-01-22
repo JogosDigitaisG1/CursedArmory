@@ -25,6 +25,6 @@ public class SceneChooserScript : MonoBehaviour
     public void Reset()
     {
         _characterStatsScript.StatsAfterDeathRestart();
-        Loader.Instance.Load(ScenesCons.BASEMENTMAIN, ScenesCons.BASEMENTMAIN);
+        Loader.Instance.RestartScene(ScenesCons.BASEMENTMAIN);
     }
 }

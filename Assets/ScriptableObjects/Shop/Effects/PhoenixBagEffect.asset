@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e018b71d07450314d96cbd96b0985bdf, type: 3}
   m_Name: PhoenixBagEffect
   m_EditorClassIdentifier: 
-  healthIncrease: 20
+  healthIncrease: 100
   capacityIncrease: 0
   damageIncrease: 0

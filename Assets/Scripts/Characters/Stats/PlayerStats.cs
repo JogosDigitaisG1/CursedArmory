@@ -138,6 +138,11 @@ public class PlayerStats : CharacterBaseStats
         bagMaxCapacity = bagMaxCapacity - num;
     }
 
+    public int GetBagMaxCapacity()
+    {
+        return bagMaxCapacity;
+    }
+
     public int SwordSpirits { get => swordSpirits; set => swordSpirits = value; }
     public int ShieldSpirits { get => shieldSpirits; set => shieldSpirits = value; }
     public int BowSpirits { get => bowSpirits; set => bowSpirits = value; }

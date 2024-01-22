@@ -72,7 +72,11 @@ public class BossEnemySAttack1 : MonoBehaviour, IEnemyAttack
                 charging = true;
                 attackCollider.enabled = true;
                 mainCollider.enabled = false;
-                lastPlayerPosition = playerPosition.transform.position;
+                if (playerPosition != null)
+                {
+                    lastPlayerPosition = playerPosition.transform.position;
+                }
+                
                 timeCharge = startTimeCharge;
             }
             else

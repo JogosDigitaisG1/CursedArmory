@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public void onPlayPress()
     {
         Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.GAME);
+
     }
 
     public void onCavePress()
@@ -20,6 +21,11 @@ public class MainMenu : MonoBehaviour
 
         Loader.Instance.Load(ScenesCons.SHOP, ScenesCons.VILLAGE);
 
+    }
+
+    public void onVillagePress()
+    {
+        Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.SHOP);
     }
 
     public void onQuitPress()
