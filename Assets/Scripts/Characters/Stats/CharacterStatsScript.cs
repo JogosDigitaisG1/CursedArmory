@@ -35,8 +35,6 @@ public class CharacterStatsScript : MonoBehaviour
     private void InitializeStats()
     {
 
-        
-
         if (defaultStats is CharacterStatSO baseStats)
         {
 
@@ -259,7 +257,6 @@ public class CharacterStatsScript : MonoBehaviour
         {
             return 0;
         }
-    
 
     }
 
@@ -342,7 +339,6 @@ public class CharacterStatsScript : MonoBehaviour
         }
 
         isAlive = false;
-
     }
 
     public void GetPickup(PickupSO pickup)
@@ -385,11 +381,21 @@ public class CharacterStatsScript : MonoBehaviour
                     break;
                 default:
                     Debug.Log("Pickup not found");
-                    
+
                     break;
             }
+
         }
 
+    }
+
+    public PlayerStats GetCurrentPlayerStats()
+    {
+        if (currentStats is PlayerStats playerStats)
+        {
+            return (PlayerStats)currentStats;
+        }
+        return null;
     }
 
 
