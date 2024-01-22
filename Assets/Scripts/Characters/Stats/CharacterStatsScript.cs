@@ -25,7 +25,7 @@ public class CharacterStatsScript : MonoBehaviour
 
     private void InitializeStats()
     {
-        
+
 
         if (defaultStats is CharacterStatSO baseStats)
         {
@@ -36,7 +36,7 @@ public class CharacterStatsScript : MonoBehaviour
                 this.baseStats = new PlayerStats(baseStats.health, baseStats.attackPower, baseStats.attackSpeed, baseStats.moveSpeed,
                      playerStats.swordSpirits, playerStats.shieldSpirits, playerStats.bowSpirits, playerStats.staffSpirits, playerStats.gold, playerStats.bagCapacity);
 
-                currentStats = new PlayerStats((PlayerStats) this.baseStats);
+                currentStats = new PlayerStats((PlayerStats)this.baseStats);
 
 
             }
@@ -62,7 +62,7 @@ public class CharacterStatsScript : MonoBehaviour
     {
 
         return currentStats.Hp;
-        
+
     }
 
     public int GetMaxHp()
@@ -106,7 +106,7 @@ public class CharacterStatsScript : MonoBehaviour
         {
             Debug.Log("idle time: " + 0);
             return 0;
-        }        
+        }
 
     }
 
@@ -175,19 +175,29 @@ public class CharacterStatsScript : MonoBehaviour
                     break;
                 default:
                     Debug.Log("Pickup not found");
-                    
+
                     break;
             }
 
             if (pickup.name == PickupCons.sword)
             {
 
-            }else if (pickup.name == PickupCons.bow)
+            }
+            else if (pickup.name == PickupCons.bow)
             {
 
             }
         }
 
+    }
+
+    public PlayerStats GetCurrentPlayerStats()
+    {
+        if (currentStats is PlayerStats playerStats)
+        {
+            return (PlayerStats)currentStats;
+        }
+        return null;
     }
 
 
