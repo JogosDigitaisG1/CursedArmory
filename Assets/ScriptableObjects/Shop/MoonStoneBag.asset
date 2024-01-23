@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Moon Stone Bag
   description: Can hold more items, because it reduces their gravity
   effectDescription: +10 capacity
-  cost: 5
+  cost: 15
   effects: {fileID: 11400000, guid: 389e684d5605a2c45b63ee2039bdfd6c, type: 2}

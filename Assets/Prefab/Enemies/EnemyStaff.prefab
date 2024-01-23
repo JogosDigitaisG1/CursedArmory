@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
-  mainBodyCollider: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  mainBodyCollider: {fileID: 6481780128221027226}
+  spriteRenderer: {fileID: 2724975900448549016}
 --- !u!114 &3017940409966440797
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class HealthScript : MonoBehaviour
 {
@@ -37,6 +40,7 @@ public class HealthScript : MonoBehaviour
 
         if (characterStatsScript != null && canTakeDamage)
         {
+            StartBlinking(.5f, .1f, spriteRenderer);
             foreach (var effect in attackEffects)
             {
                 switch (effect)
@@ -75,17 +79,20 @@ public class HealthScript : MonoBehaviour
     private void GetTemporalInvincibility(float time, float blinkingTime)
     {
 
-        if(mainBodyCollider != null)
+        if (mainBodyCollider != null)
         {
             mainBodyCollider.enabled = false;
         }
         canTakeDamage = false;
-        damageEffects.BlinkingCompleted += OnBlinkingCompleted;
-        damageEffects.StartBlinking(time, 0.1f, spriteRenderer);
-
+        Blink(time);
 
     }
 
+    private void Blink(float time)
+    {
+        damageEffects.BlinkingCompleted += OnBlinkingCompleted;
+        damageEffects.StartBlinking(time, 0.1f, spriteRenderer);
+    }
 
     private void OnBlinkingCompleted(bool success)
     {
@@ -163,6 +170,44 @@ public class HealthScript : MonoBehaviour
             characterStatsScript.SetMaxHp(maxHP);
         }
     }
+
+
+
+    public void StartBlinking(float duration, float blinkInterval, SpriteRenderer spriteRenderer)
+    {
+        StartCoroutine(BlinkRoutine(duration, blinkInterval, spriteRenderer));
+    }
+
+    private IEnumerator BlinkRoutine(float duration, float blinkInterval, SpriteRenderer spriteRenderer)
+    {
+        if (spriteRenderer == null) yield break;
+
+        float elapsedTime = 0f;
+        bool visible = true;
+
+        Quaternion startRotation = transform.localRotation;
+
+        while (elapsedTime < duration)
+        {
+            yield return new WaitForSeconds(blinkInterval);
+            visible = !visible;
+            spriteRenderer.enabled = visible;
+
+            float currentAngle = Mathf.Sin(elapsedTime * 20f) * 30f;
+            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
+
+
+            elapsedTime += blinkInterval;
+
+
+        }
+
+        transform.localRotation = startRotation;
+
+        spriteRenderer.enabled = true; 
+
+    }
+
 
 
 }

@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatsScript: {fileID: 0}
   mainBodyCollider: {fileID: 8326158076144565046}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 48863948852210280}
 --- !u!114 &5458336151235126660
 MonoBehaviour:
   m_ObjectHideFlags: 0

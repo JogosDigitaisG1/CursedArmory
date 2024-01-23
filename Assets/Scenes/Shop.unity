@@ -217,10 +217,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinUi: {fileID: 867430889}
   shopItemSO:
-  - {fileID: 11400000, guid: 011ba48e5ed00d44d93ca0bb34c32bb3, type: 2}
   - {fileID: 11400000, guid: e7a6ed943ab109a4ba6824a64c8c005c, type: 2}
-  - {fileID: 11400000, guid: dfb7fe4d0e5896344a2c71b5f085d48e, type: 2}
+  - {fileID: 11400000, guid: 011ba48e5ed00d44d93ca0bb34c32bb3, type: 2}
   - {fileID: 11400000, guid: cb35bd86d88d3a44490b2f3c94e1e524, type: 2}
+  - {fileID: 11400000, guid: 560dd6e87fc4b0a4cad0fa34037fe9da, type: 2}
+  - {fileID: 11400000, guid: 72b4779c1d2bd75449a4dee7b458e18e, type: 2}
+  - {fileID: 11400000, guid: 10ac2d33644058c44a1ecba4fc2bfe35, type: 2}
+  - {fileID: 11400000, guid: ec974e2a793421e49a28826c1d36293b, type: 2}
+  - {fileID: 11400000, guid: dfb7fe4d0e5896344a2c71b5f085d48e, type: 2}
   shopPanels: []
   itemTemplate: {fileID: 9002565735908921277, guid: ce285505b629cc742a83c13969b00544, type: 3}
   contents: {fileID: 110036734}
