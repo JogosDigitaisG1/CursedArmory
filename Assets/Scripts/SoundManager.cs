@@ -6,17 +6,40 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public GameObject sound;
-    public AudioSource soundSource;
+    public AudioSource soundSourceMusic;
+    public AudioSource soundSourceCoin;
+    public AudioSource soundSourcePickcup;
+    public AudioSource soundSourcePowerup;
     public AudioClip beforeGameSound;
     public AudioClip dungeonsGameSound;
+    public AudioClip coinSound;
+    public AudioClip pickupSound;
+    public AudioClip powerUpSound;
+
+
+    public static SoundManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(sound);
-        soundSource = GetComponent<AudioSource>();
-        soundSource.clip = beforeGameSound;
-        soundSource.Play();
+        soundSourceMusic.clip = beforeGameSound;
+        soundSourceMusic.Play();
     }
 
     // Update is called once per frame
@@ -25,10 +48,51 @@ public class SoundManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if (sceneName == ScenesCons.BASEMENTMAIN)
+    }
+
+    public void PlayVillageTheme()
+    {
+        if (soundSourceMusic.clip != beforeGameSound)
         {
-            soundSource.clip = dungeonsGameSound;
-            soundSource.Play();
+            soundSourceMusic.clip = beforeGameSound;
+            soundSourceMusic.Play();
         }
+
+    }
+
+
+    public void PlayDungeonTheme()
+    {
+
+        if (soundSourceMusic.clip != dungeonsGameSound)
+        {
+            soundSourceMusic.clip = dungeonsGameSound;
+            soundSourceMusic.Play();
+        }
+
+    }
+
+    public void PlayCoinSound()
+    {
+
+        soundSourceCoin.clip = coinSound;
+        soundSourceCoin.Play();
+
+    }
+
+    public void PlayPickupSound()
+    {
+
+        soundSourcePickcup.clip = pickupSound;
+        soundSourcePickcup.Play();
+
+    }
+
+    public void PlayPowerupSound()
+    {
+
+        soundSourcePowerup.clip = powerUpSound;
+        soundSourcePowerup.Play();
+
     }
 }

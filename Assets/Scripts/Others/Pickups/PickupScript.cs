@@ -7,13 +7,11 @@ public class PickupScript : MonoBehaviour
 
     [SerializeField]
     private PickupSO pickupSO;
-    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,8 +26,7 @@ public class PickupScript : MonoBehaviour
     {
         if(collision.gameObject.tag == TagsCons.playerTag)
         {
-            audioSource.Play();
-            //Debug.Log("Got pickup");
+            Debug.Log("Got pickup");
         }
     }
 }

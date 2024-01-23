@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106127d93056e6342b2bc61809472b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 5
+  detectRadius: 8
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   playerCol: {fileID: 0}
   playerPos: {x: 0, y: 0, z: 0}
   decisionTime: {x: 1, y: 2}
-  playerDistanceOffset: 1
+  playerDistanceOffset: 1.5
   distanceToPlayer: 0
   moveFilter:
     useTriggers: 0

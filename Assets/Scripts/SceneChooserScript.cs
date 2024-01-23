@@ -18,6 +18,7 @@ public class SceneChooserScript : MonoBehaviour
     public void GoToVillage()
     {
         _characterStatsScript.StatsAfterChangeScene();
+        SoundManager.Instance.PlayVillageTheme();
         Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.BASEMENTMAIN);
     }
 
@@ -25,6 +26,7 @@ public class SceneChooserScript : MonoBehaviour
     public void Reset()
     {
         _characterStatsScript.StatsAfterDeathRestart();
+        SoundManager.Instance.PlayDungeonTheme();
         Loader.Instance.RestartScene(ScenesCons.BASEMENTMAIN);
     }
 }

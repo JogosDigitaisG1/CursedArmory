@@ -352,17 +352,18 @@ public class CharacterStatsScript : MonoBehaviour
             {
                 case var _ when pickupName == PickupCons.sword:
 
+                    SoundManager.Instance.PlayPickupSound();
                     playerStats.AddSword();
                     playerStatsIngameMax.AddSword();
                     IncreseOnePowerPickup(5);
                     
-
                     break;
                 case var _ when pickupName == PickupCons.bow:
                     playerStats.AddBow();
                     
                     break;
                 case var _ when pickupName == PickupCons.staff:
+                    SoundManager.Instance.PlayPickupSound();
                     playerStats.AddStaff();
                     IncreseOnePowerPickup(2);
                     RaiseInGameMaxHp(5);
@@ -370,12 +371,14 @@ public class CharacterStatsScript : MonoBehaviour
                     
                     break;
                 case var _ when pickupName == PickupCons.shield:
+                    SoundManager.Instance.PlayPickupSound();
                     playerStats.AddShield();
                     playerStatsIngameMax.AddShield();
                     RaiseInGameMaxHp(10);
                     
                     break;
                 case var _ when pickupName == PickupCons.gold:
+                    SoundManager.Instance.PlayCoinSound();
                     IncreaseOneGold();
                     
                     break;

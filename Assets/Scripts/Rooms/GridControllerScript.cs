@@ -39,13 +39,9 @@ public class GridControllerScript : MonoBehaviour
                 go.GetComponent<Transform>().position = 
                     new Vector2(x - (grid.cols - grid.horizontalOffset), 
                     y - (grid.rows - grid.verticalOffset));
-
-                Debug.Log("vertical offset " + grid.verticalOffset);
-                Debug.Log("horizontal offset " + grid.horizontalOffset);
                 
 
                 go.name = "X: " + x + ", Y: " + y;
-                Debug.Log(go.name);
                 availablePoints.Add(go.transform.position);
                 go.SetActive(false);
             }
