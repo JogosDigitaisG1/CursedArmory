@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6752184805794595214}
-  - component: {fileID: 4870658636493228507}
   - component: {fileID: 2536072197858780387}
+  - component: {fileID: 5914530787022971173}
   m_Layer: 0
   m_Name: SwordPickup
   m_TagString: Pickup
@@ -34,19 +34,6 @@ Transform:
   - {fileID: 3157457200984250877}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4870658636493228507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722214766606407745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29bb7cd0a3f9e1547a2df16cd8b08e83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupSO: {fileID: 11400000, guid: a1598a4bfaea44d429a20140139d4bc5, type: 2}
 --- !u!50 &2536072197858780387
 Rigidbody2D:
   serializedVersion: 4
@@ -74,6 +61,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5914530787022971173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722214766606407745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bb7cd0a3f9e1547a2df16cd8b08e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSO: {fileID: 11400000, guid: a1598a4bfaea44d429a20140139d4bc5, type: 2}
 --- !u!1 &3276314711239236219
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,3 +21,5 @@ MonoBehaviour:
   shieldSpirits: 0
   bowSpirits: 0
   staffSpirits: 0
+  gold: 0
+  bagCapacity: 5

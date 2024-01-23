@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public bool activeRoom = false;
+    public bool hasSpecial = false;
 
 
 

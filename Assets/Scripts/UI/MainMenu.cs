@@ -5,12 +5,29 @@ public class MainMenu : MonoBehaviour
 {
     public void onPlayPress()
     {
-        SceneManager.LoadScene(ScenesCons.VILLAGE);
+        SoundManager.Instance.PlayVillageTheme();
+        Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.GAME);
+
     }
 
     public void onCavePress()
     {
-        SceneManager.LoadScene(ScenesCons.BASEMENTMAIN);
+        SoundManager.Instance.PlayDungeonTheme();
+        Loader.Instance.Load(ScenesCons.BASEMENTMAIN, ScenesCons.VILLAGE);
+       
+    }
+
+    public void onStorePress()
+    {
+        SoundManager.Instance.PlayVillageTheme();
+        Loader.Instance.Load(ScenesCons.SHOP, ScenesCons.VILLAGE);
+
+    }
+
+    public void onVillagePress()
+    {
+        SoundManager.Instance.PlayVillageTheme();
+        Loader.Instance.Load(ScenesCons.VILLAGE, ScenesCons.SHOP);
     }
 
     public void onQuitPress()

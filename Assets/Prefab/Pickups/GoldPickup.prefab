@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1159122902374532142}
-  - component: {fileID: 5016016957623252833}
   - component: {fileID: 8218904521840192710}
+  - component: {fileID: 486504426208545236}
   m_Layer: 0
   m_Name: GoldPickup
-  m_TagString: Pickup
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,19 +34,6 @@ Transform:
   - {fileID: 5717376324616102536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5016016957623252833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5850002870133773486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29bb7cd0a3f9e1547a2df16cd8b08e83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupSO: {fileID: 11400000, guid: 6aaf0afa0b737194cac079728f0df7ec, type: 2}
 --- !u!50 &8218904521840192710
 Rigidbody2D:
   serializedVersion: 4
@@ -74,6 +61,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &486504426208545236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850002870133773486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bb7cd0a3f9e1547a2df16cd8b08e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSO: {fileID: 11400000, guid: 6aaf0afa0b737194cac079728f0df7ec, type: 2}
 --- !u!1 &6151372569775633975
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3586608028767758509}
   m_Layer: 0
   m_Name: PickupSprite
-  m_TagString: Pickup
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 1917808289, guid: 051653f7ccfe46743a6bb49baf795029, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cfb0983f014ccf0489aeb592f94eb36c, type: 3}
   m_Color: {r: 0.9245283, g: 0.9086944, b: 0.7867212, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

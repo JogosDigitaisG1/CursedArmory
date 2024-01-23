@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DungeonGenerator : MonoBehaviour
+public class DungeonGenerator :  BaseDungeonGenerator
 {
     public DungeonGeneratorDataSO dungeonGeneratorDataSO;
+    [SerializeField]
     private List<Vector2Int> dungeonRooms;
 
-    private void Start()
+    private void Awake()
+    {
+
+    }
+
+
+    public override void InitializeDungeon()
     {
         dungeonRooms = DungeonCrawlerControllerScript.GenerateDungeon(dungeonGeneratorDataSO);
         SpawnRooms(dungeonRooms);
-            
     }
 
     private void SpawnRooms(IEnumerable<Vector2Int> rooms)
@@ -28,5 +34,18 @@ public class DungeonGenerator : MonoBehaviour
 
 
         }
+    }
+
+    public override void DeleteDungeon()
+    {
+        Debug.Log("Before " + dungeonRooms.Count);
+        dungeonRooms.Clear();
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        RoomControllerScript.instance.loadedRooms.Clear();
+
+        Debug.Log("After " + dungeonRooms.Count);
     }
 }

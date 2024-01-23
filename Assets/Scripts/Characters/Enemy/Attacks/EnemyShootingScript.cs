@@ -40,7 +40,7 @@ public class EnemyShootingScript : MonoBehaviour, IEnemyAttack
         if (timeBtwShots <= 0)
         {
             GameObject projectile = Instantiate(proyectile, transform.position, Quaternion.identity);
-            projectile.GetComponent<ProjectileScript>().targetPos = playerPos;
+            projectile.GetComponent<EnemyProjectileScript>().targetPos = playerPos;
             timeBtwShots = startTimeBtwShots;
         }
         else

@@ -6,6 +6,7 @@ using static PlayerControllerScript;
 
 public class AttackScript : MonoBehaviour
 {
+    private List<IPlayerAttack> activeAttacks = new List<IPlayerAttack>();
 
     private bool isAttacking = false;
 
@@ -16,51 +17,77 @@ public class AttackScript : MonoBehaviour
 
     public List<AttackTypeEnumPair> attackTypeList = new List<AttackTypeEnumPair>();
 
-    private IPlayerAttack currentAttack;
-
     public bool slash = false;
+    public bool shoot = false;
+    public bool basic = false;
+    public bool special = false;
 
     // Start is called before the first frame update
     void Start()
     {
         characterStatsScript= GetComponentInParent<CharacterStatsScript>();
 
-        //int index = list.FindIndex(f => f.Bar == 17);
-
-        int index = attackTypeList.FindIndex(f => f.attackType == PlayerAttackType.Basic);
-        currentAttack = attackTypeList[index].attackTypeGameObject.GetComponent<IPlayerAttack>();  
-
-
-
+        ActivateAttack(PlayerAttackType.Basic); // Activate basic attack by default
     }
 
     private void Update()
     {
-        if(slash)
+
+        ToggleAttack(PlayerAttackType.Slash, characterStatsScript.GetNumberOfSwords() >= 5);
+
+
+        ToggleAttack(PlayerAttackType.Shoot, characterStatsScript.GetNumberOfStaffs() >= 5);
+
+        ToggleAttack(PlayerAttackType.Special, GameManager.Instance.defeatedBoss);
+
+
+
+    }
+
+
+
+    private void ActivateAttack(PlayerAttackType attackType)
+    {
+        int index = attackTypeList.FindIndex(f => f.attackType == attackType);
+        if (index != -1)
         {
-            ChangeAttackType(PlayerAttackType.Slash);
-        }
-        else
-        {
-            ChangeAttackType(PlayerAttackType.Basic);
+            IPlayerAttack attack = attackTypeList[index].attackTypeGameObject.GetComponent<IPlayerAttack>();
+            if (!activeAttacks.Contains(attack))
+            {
+                activeAttacks.Add(attack);
+                attackTypeList[index].attackTypeGameObject.SetActive(true);
+            }
         }
     }
 
-    public void ChangeAttackType(PlayerAttackType changeAttackType)
+    public void ToggleAttack(PlayerAttackType attackType, bool activate)
     {
-        switch (changeAttackType)
+        int index = attackTypeList.FindIndex(f => f.attackType == attackType);
+        if (index != -1)
         {
-            case PlayerAttackType.Basic:
-                currentAttack = attackTypeList[attackTypeList.FindIndex(f => f.attackType == PlayerAttackType.Basic)].
-                    attackTypeGameObject.GetComponent<IPlayerAttack>();
-                break;
-            case PlayerAttackType.Slash:
-                currentAttack = attackTypeList[attackTypeList.FindIndex(f => f.attackType == PlayerAttackType.Slash)].
-                    attackTypeGameObject.GetComponent<IPlayerAttack>();
-                break;
-                default: break;
+            IPlayerAttack attack = attackTypeList[index].attackTypeGameObject.GetComponent<IPlayerAttack>();
+            if (activate)
+            {
+                SoundManager.Instance.PlayPowerupSound();
+                if (!activeAttacks.Contains(attack))
+                {
+                    activeAttacks.Add(attack);
+                    attackTypeList[index].attackTypeGameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                if (activeAttacks.Contains(attack))
+                {
+                    activeAttacks.Remove(attack);
+                    attackTypeList[index].attackTypeGameObject.SetActive(false);
+                }
+            }
         }
     }
+
+
+
 
     public void Attack(LookDirection lookDirection)
     {
@@ -85,32 +112,49 @@ public class AttackScript : MonoBehaviour
 
     private void AttackRight()
     {
+        
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.PerformAttackRight();
+        }
         isAttacking = true;
-        currentAttack.PerformAttackRight();
+
     }
 
     private void AttackLeft()
     {
-
-        currentAttack.PerformAttackLeft();
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.PerformAttackLeft();
+        }
         isAttacking = true;
+
     }
 
     private void AttackUp()
     {
-        currentAttack.PerformAttackUp();
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.PerformAttackUp();
+        }
         isAttacking = true;
     }
 
     private void AttackDown()
     {
-        currentAttack.PerformAttackDown();
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.PerformAttackDown();
+        }
         isAttacking = true;
     }
 
     public void StopAttack()
     {
-        currentAttack.StopAttack();
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.StopAttack();
+        }
         isAttacking = false;
 
     }
@@ -138,7 +182,12 @@ public class AttackScript : MonoBehaviour
 
     public void OnChildTriggerEnter2D(Collider2D collision)
     {
-        currentAttack.OnChildTriggerEnter2D(collision, characterStatsScript.GetAttackPower());
+
+        foreach (var activeAttack in activeAttacks)
+        {
+            activeAttack.OnChildTriggerEnter2D(collision, characterStatsScript.GetAttackPower());
+        }
+        
     }
 
     //private bool IsAttackCollider(Collider2D collider)

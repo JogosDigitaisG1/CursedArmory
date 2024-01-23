@@ -13,6 +13,8 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
     private CharacterStatsScript characterStatsScript;
     private AttackEnemyScript attackEnemyScript;
     private EnemyScript enemyScript;
+    private BossEnemySAttack1 bossEnemySAttack1;
+    private BossEnemySAttack2 bossEnemySAttack2;
 
     [SerializeField]
     private float idleTimerMax;
@@ -25,7 +27,9 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
         Roam,
         Follow,
         Attack,
-        Dead
+        Dead,
+        Special1,
+        Special2
     }
 
     private void Start()
@@ -36,6 +40,8 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
         movementEnemyScript = GetComponent<MovementEnemyScript>();
         characterStatsScript = GetComponent<CharacterStatsScript>();
         attackEnemyScript = GetComponentInChildren<AttackEnemyScript>();
+        bossEnemySAttack1 = GetComponentInChildren<BossEnemySAttack1>();
+        bossEnemySAttack2 = GetComponentInChildren<BossEnemySAttack2>();
         enemyScript = GetComponentInChildren<EnemyScript>();
 
         idleTimerMax = characterStatsScript.GetEnemyIdleTimer();
@@ -47,6 +53,8 @@ public class EnemyStateManager : StateManager<EnemyStateManager.EnemyStates>
         States.Add(EnemyStates.Follow, new FollowEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript));
         States.Add(EnemyStates.Attack, new AttackEnemyState(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript));
         States.Add(EnemyStates.Dead, new DeadEnemyState(animator, spriteRenderer, attackEnemyScript));
+        States.Add(EnemyStates.Special1, new BossSpecialAttack1State(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript, bossEnemySAttack1));
+        States.Add(EnemyStates.Special2, new BossSpecialAttack2State(enemyScript, characterStatsScript, animator, spriteRenderer, detectScript, movementEnemyScript, attackEnemyScript, bossEnemySAttack2));
 
         // Set initial state
         CurrentState = States[(EnemyStates.Idle)];

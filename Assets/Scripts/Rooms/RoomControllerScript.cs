@@ -18,6 +18,8 @@ public class RoomControllerScript : MonoBehaviour
 
     public static RoomControllerScript instance;
     string currentWorldName = "Basement";
+    private RoomPercentageSpawnerScript roomPercentageSpawnerScript;
+
 
     RoomInfo currentRoomData;
 
@@ -31,6 +33,14 @@ public class RoomControllerScript : MonoBehaviour
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
     public bool gameStarted = false;
+
+    public Canvas canvas;
+    public GameObject gameOver;
+    public GameObject win;
+    public PlayerControllerScript playerControl;
+    public CharacterStatsScript playerStats;
+
+    public Canvas ui;
 
 
     private void Awake()
@@ -46,14 +56,19 @@ public class RoomControllerScript : MonoBehaviour
         //LoadRoom("Start", 0, 1);
         //LoadRoom("Start", 0, -1);
 
-
+       // roomPercentageSpawnerScript = GetComponent<RoomPercentageSpawnerScript>();
 
         
+
     }
 
 
     private void Update()
     {
+        GameManager.Instance.bossSpawned = spawnedBossRoom;
+        ui.gameObject.SetActive(spawnedBossRoom && GameManager.Instance.startedDungeon);
+
+
         UpdateRoomQueue();
 
         //foreach (RoomScript room in loadedRooms)
@@ -73,6 +88,22 @@ public class RoomControllerScript : MonoBehaviour
                 gameStarted = true;
                 room.StartGameMain();
             }
+
+            playerControl.canMove = true;
+        }
+
+        if (currentRoom != null && currentRoom.name.Contains("End") && !(currentRoom.numOfEnemies > 0))
+        {
+            GameManager.Instance.defeatedBoss = true;
+            canvas.gameObject.SetActive(true);
+            playerControl.canMove = false;
+            win.SetActive(true);
+            Debug.Log("Boxx dead");
+        }
+
+        if (!playerStats.IsAlive())
+        {
+            gameOver.SetActive(true);
         }
     }
 
@@ -139,38 +170,69 @@ public class RoomControllerScript : MonoBehaviour
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
             loadedRooms.Remove(roomToRemove);
 
+            tempRoom.isBossRoom = true;
             LoadRoom("End", tempRoom.X, tempRoom.Y);
         }
     }
 
+    //public void LoadRoom(string name, int x, int y)
+    //{
+    //    if(DoesRoomExist(x, y))
+    //    {
+    //        return;
+    //    }
+
+    //    RoomInfo newRoomData = new RoomInfo();
+
+    //    newRoomData.name = name;
+    //    newRoomData.x = x;  
+    //    newRoomData.y = y;
+
+    //    loadRoomQueue.Enqueue(newRoomData);
+    //}
+
     public void LoadRoom(string name, int x, int y)
     {
-        if(DoesRoomExist(x, y))
+        if (DoesRoomExist(x, y))
         {
             return;
         }
 
-        RoomInfo newRoomData = new RoomInfo();
+        string activeSceneName = SceneManager.GetActiveScene().name;
+        string roomName = currentWorldName + name;
 
-        newRoomData.name = name;
-        newRoomData.x = x;  
-        newRoomData.y = y;
+        if (activeSceneName != roomName)
+        {
+            RoomInfo newRoomData = new RoomInfo();
+            newRoomData.name = name;
+            newRoomData.x = x;
+            newRoomData.y = y;
 
-        loadRoomQueue.Enqueue(newRoomData);
+            loadRoomQueue.Enqueue(newRoomData);
+        }
     }
+
+
 
     IEnumerator LoadRoomRoutine(RoomInfo info)
     {
         string roomName = currentWorldName + info.name;
 
-        AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName,
-            LoadSceneMode.Additive);
+        // Unload the previous scene
+        if (SceneManager.GetSceneByName(roomName).isLoaded)
+            yield return SceneManager.UnloadSceneAsync(roomName);
 
-        while(loadRoom.isDone == false)
+        // Load the new scene
+        AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
+
+        while (!loadRoom.isDone)
         {
             yield return null;
         }
+
+       
     }
+
 
     public void RegisterRoom(RoomScript room)
     {
@@ -216,7 +278,8 @@ public class RoomControllerScript : MonoBehaviour
             "Empty",
             "Basic1"
         };
+        ;
 
-        return possibleRooms[UnityEngine.Random.Range(0, possibleRooms.Length)];
+        return GetComponent<RoomPercentageSpawnerScript>().GetRandomScene();
     }
 }

@@ -14,6 +14,8 @@ public class CharacterBaseStats
     [SerializeField]
     private int moveSpeed;
 
+
+    public CharacterBaseStats() { }
     public CharacterBaseStats(int hp, int attackPower, int attackSpeed, int moveSpeed)
     {
         this.hp = hp;
@@ -21,6 +23,8 @@ public class CharacterBaseStats
         this.attackSpeed = attackSpeed;
         this.moveSpeed = moveSpeed;
     }
+
+
 
     public int Hp { get => hp; set => hp = value; }
     public int AttackPower { get => attackPower; set => attackPower = value; }

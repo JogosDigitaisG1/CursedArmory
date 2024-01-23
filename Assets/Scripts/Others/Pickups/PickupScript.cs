@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PickupScript : MonoBehaviour
 {
+
     [SerializeField]
     private PickupSO pickupSO;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class PickupScript : MonoBehaviour
     {
         if(collision.gameObject.tag == TagsCons.playerTag)
         {
-            //Debug.Log("Got pickup");
+            Debug.Log("Got pickup");
         }
     }
 }

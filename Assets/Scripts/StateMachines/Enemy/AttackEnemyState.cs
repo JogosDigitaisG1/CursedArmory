@@ -13,6 +13,7 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
     private CharacterStatsScript characterStatsScript;
     private EnemyScript enemyScript;
 
+
     public AttackEnemyState(EnemyScript enemyScript, CharacterStatsScript characterStatsScript, Animator animator, SpriteRenderer spriteRenderer, DetectScript detectScript, MovementEnemyScript movementEnemyScript,
         AttackEnemyScript attackEnemyScript) : base(EnemyStateManager.EnemyStates.Attack)
     {
@@ -32,7 +33,6 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
     public override void ExitState()
     {
-        
     }
 
     public override EnemyStateManager.EnemyStates GetNextState()
@@ -44,21 +44,33 @@ public class AttackEnemyState : BaseState<EnemyStateManager.EnemyStates>
 
         if (enemyScript.activeRoom)
         {
+            if (attackEnemyScript.attacks == 4 && enemyScript.hasSpecial)
+            {
+                return EnemyStateManager.EnemyStates.Special1;
+            }
             if (movementEnemyScript.IsCloseToPlayer())
             {
                 return EnemyStateManager.EnemyStates.Attack;
             }
-            if (detectScript.DetectedPlayer())
+            if (!attackEnemyScript.IsAttacking())
             {
-                attackEnemyScript.StopAttack();
-                return EnemyStateManager.EnemyStates.Follow;
+                if (detectScript.DetectedPlayer())
+                {
+                    attackEnemyScript.StopAttack();
+                    return EnemyStateManager.EnemyStates.Follow;
+                }
+                else
+                {
+                    attackEnemyScript.StopAttack();
+                    movementEnemyScript.StopFollowPlayer();
+                    return EnemyStateManager.EnemyStates.Idle;
+                }
             }
             else
             {
-                attackEnemyScript.StopAttack();
-                movementEnemyScript.StopFollowPlayer();
-                return EnemyStateManager.EnemyStates.Idle;
+                return EnemyStateManager.EnemyStates.Attack;
             }
+           
         }
         else
         {
