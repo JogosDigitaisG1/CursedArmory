@@ -66,6 +66,7 @@ public class ShootAttack : MonoBehaviour, IPlayerAttack
 
     private void Shoot()
     {
+        SoundManager.Instance.PlaySpellSound();
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (timeBtwShots <= 0)

@@ -25,8 +25,9 @@ public class RoomControllerScript : MonoBehaviour
 
     public RoomScript currentRoom;
 
-    Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
 
+    public Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
+    
     public List<RoomScript> loadedRooms { get; } = new List<RoomScript>();
 
     bool isLoadingRoom = false;
@@ -65,6 +66,8 @@ public class RoomControllerScript : MonoBehaviour
 
     private void Update()
     {
+        
+        
         GameManager.Instance.bossSpawned = spawnedBossRoom;
         ui.gameObject.SetActive(spawnedBossRoom && GameManager.Instance.startedDungeon);
 
@@ -90,7 +93,11 @@ public class RoomControllerScript : MonoBehaviour
             }
 
             playerControl.canMove = true;
+        }else if (!spawnedBossRoom && !gameStarted)
+        {
+            Debug.Log("Queue num " + loadRoomQueue.Count);
         }
+
 
         if (currentRoom != null && currentRoom.name.Contains("End") && !(currentRoom.numOfEnemies > 0))
         {
@@ -171,25 +178,10 @@ public class RoomControllerScript : MonoBehaviour
             loadedRooms.Remove(roomToRemove);
 
             tempRoom.isBossRoom = true;
+            Debug.Log("Boss room in " + tempRoom.X + " " + tempRoom.Y);
             LoadRoom("End", tempRoom.X, tempRoom.Y);
         }
     }
-
-    //public void LoadRoom(string name, int x, int y)
-    //{
-    //    if(DoesRoomExist(x, y))
-    //    {
-    //        return;
-    //    }
-
-    //    RoomInfo newRoomData = new RoomInfo();
-
-    //    newRoomData.name = name;
-    //    newRoomData.x = x;  
-    //    newRoomData.y = y;
-
-    //    loadRoomQueue.Enqueue(newRoomData);
-    //}
 
     public void LoadRoom(string name, int x, int y)
     {
@@ -276,10 +268,12 @@ public class RoomControllerScript : MonoBehaviour
         string[] possibleRooms = new string[]
         {
             "Empty",
+            "Basic1",
             "Basic1"
         };
         ;
 
         return GetComponent<RoomPercentageSpawnerScript>().GetRandomScene();
+       // return possibleRooms[UnityEngine.Random.Range(0, possibleRooms.Length)];
     }
 }

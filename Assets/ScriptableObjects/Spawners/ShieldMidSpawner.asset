@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6622afa062b90c449d482e8b515a452, type: 3}
   m_Name: ShieldMidSpawner
   m_EditorClassIdentifier: 
-  itemToSpawn: {fileID: 3676114518241581280, guid: de9bb548cfc5f4341a7e0d396bf32008, type: 3}
+  itemToSpawn: {fileID: 3676114518241581280, guid: 2f5803de9febbcd40ad426458eb8b5e2, type: 3}
   minSpawn: 1
   maxSpawn: 3

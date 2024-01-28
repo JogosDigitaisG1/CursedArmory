@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +28,8 @@ public class GameManager : MonoBehaviour
     public bool bossSpawned = false;
 
     public bool defeatedBoss = false;
+
+    public List<ShopItemClass> shopItemClassList;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;

@@ -143,9 +143,9 @@ public class RoomScript : MonoBehaviour
 
         }
 
-        if (isBossRoom && numOfEnemies <= 0)
+        if (isBossRoom && activeRoom)
         {
-            print("game over");
+            SoundManager.Instance.PlayBossTheme();
         }
     }
 

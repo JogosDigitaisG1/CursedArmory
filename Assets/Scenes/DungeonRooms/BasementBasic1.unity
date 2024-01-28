@@ -1423,11 +1423,11 @@ MonoBehaviour:
   - name: Enemy1
     spawnerData: {fileID: 11400000, guid: 9fb0c439a752ad54ca79efa1b89618dc, type: 2}
   - name: Enemy2
-    spawnerData: {fileID: 11400000, guid: 08c8378a32715c249b650cef378738cd, type: 2}
+    spawnerData: {fileID: 11400000, guid: 8970007cf4f1904478774ff68817a216, type: 2}
   - name: ItemSpawner
     spawnerData: {fileID: 11400000, guid: 828525acb1b0d1546adba10e94fa66e8, type: 2}
   - name: Enemy3
-    spawnerData: {fileID: 11400000, guid: 2aa3f53cdf0283c49a3f06617b5a3123, type: 2}
+    spawnerData: {fileID: 11400000, guid: f5474a6175d447141b56a385f7671261, type: 2}
 --- !u!1001 &1544954049
 PrefabInstance:
   m_ObjectHideFlags: 0

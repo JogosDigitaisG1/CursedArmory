@@ -39,6 +39,7 @@ public class EnemyShootingScript : MonoBehaviour, IEnemyAttack
     {
         if (timeBtwShots <= 0)
         {
+            SoundManager.Instance.PlaySpellSound();
             GameObject projectile = Instantiate(proyectile, transform.position, Quaternion.identity);
             projectile.GetComponent<EnemyProjectileScript>().targetPos = playerPos;
             timeBtwShots = startTimeBtwShots;

@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482bab86ca0cc244dbd696fc1721b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStats: {fileID: 11400000, guid: 7a077ddd5d6d8d54696b812906a48b13, type: 2}
+  defaultStats: {fileID: 11400000, guid: 24615a4b127378946a88490a7d578f74, type: 2}
   maxStats:
     hp: 0
     attackPower: 0

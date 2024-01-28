@@ -44,7 +44,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackLeft()
     {
-        
+        SoundManager.Instance.PlaySlashSound();
         slashAttackColliderX.enabled = true;
         spriteRendererX.enabled = true;
         //animatorX.enabled = true;
@@ -55,6 +55,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackRight()
     {
+        SoundManager.Instance.PlaySlashSound();
         slashAttackColliderX.enabled = true;
         spriteRendererX.enabled = true;
         //animatorX.enabled = true;
@@ -65,6 +66,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackUp()
     {
+        SoundManager.Instance.PlaySlashSound();
         slashAttackColliderY.enabled = true;
         spriteRendererY.enabled = true;
         //animatorY.enabled = true;
@@ -74,6 +76,7 @@ public class SlashAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackDown()
     {
+        SoundManager.Instance.PlaySlashSound();
         slashAttackColliderY.enabled = true;
         spriteRendererY.enabled = true;
         //animatorY.enabled = true;

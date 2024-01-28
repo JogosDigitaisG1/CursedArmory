@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c7ad893b498745b1ccd35bc5911a6, type: 3}
   m_Name: BossEnemyCharacterStats
   m_EditorClassIdentifier: 
-  health: 200
+  health: 500
   attackPower: 30
   attackSpeed: 0
   defense: 0
