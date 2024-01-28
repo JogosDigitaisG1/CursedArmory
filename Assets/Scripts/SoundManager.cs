@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +11,22 @@ public class SoundManager : MonoBehaviour
     public AudioSource soundSourceCoin;
     public AudioSource soundSourcePickcup;
     public AudioSource soundSourcePowerup;
+    public AudioSource soundSourceSlash;
+    public AudioSource soundSourceDamage;
+    public AudioSource soundSourceSpell;
+    public AudioSource soundSourceStomp;
+    public AudioSource soundSourceSpecial;
     public AudioClip beforeGameSound;
     public AudioClip dungeonsGameSound;
     public AudioClip coinSound;
     public AudioClip pickupSound;
     public AudioClip powerUpSound;
+    public AudioClip slashSound;
+    public AudioClip damageSound;
+    public AudioClip spellSound;
+    public AudioClip stompSound;
+    public AudioClip specialSound;
+    public AudioClip bossMusic;
 
 
     public static SoundManager Instance { get; private set; }
@@ -72,27 +84,102 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayCoinSound()
+    public void PlayBossTheme()
     {
 
-        soundSourceCoin.clip = coinSound;
-        soundSourceCoin.Play();
+        if (soundSourceMusic.clip != bossMusic)
+        {
+            soundSourceMusic.clip = bossMusic;
+            soundSourceMusic.Play();
+        }
+
+    }
+
+    public void PlayCoinSound()
+    {
+        if (!soundSourceCoin.isPlaying)
+        {
+            soundSourceCoin.clip = coinSound;
+            soundSourceCoin.Play();
+        }
+
 
     }
 
     public void PlayPickupSound()
     {
+        if (!soundSourcePickcup.isPlaying)
+        {
+            soundSourcePickcup.clip = pickupSound;
+            soundSourcePickcup.Play();
+        }
 
-        soundSourcePickcup.clip = pickupSound;
-        soundSourcePickcup.Play();
 
     }
 
     public void PlayPowerupSound()
     {
+        if (!soundSourcePowerup.isPlaying)
+        {
+            soundSourcePowerup.clip = powerUpSound;
+            soundSourcePowerup.Play();
+        }
 
-        soundSourcePowerup.clip = powerUpSound;
-        soundSourcePowerup.Play();
+
+    }
+
+    public void PlaySlashSound()
+    {
+        if (!soundSourceSlash.isPlaying)
+        {
+            soundSourceSlash.clip = slashSound;
+            soundSourceSlash.Play();
+        }
+
+
+    }
+
+    public void PlayDamageSound()
+    {
+        if (!soundSourceDamage.isPlaying)
+        {
+            soundSourceDamage.clip = damageSound;
+            soundSourceDamage.Play();
+        }
+
+
+    }
+
+    public void PlaySpellSound()
+    {
+        if (!soundSourceSpell.isPlaying)
+        {
+            soundSourceSpell.clip = spellSound;
+            soundSourceSpell.Play();
+        }
+
+
+    }
+
+    public void PlayStompSound()
+    {
+        if (!soundSourceStomp.isPlaying)
+        {
+            soundSourceStomp.clip = stompSound;
+            soundSourceStomp.Play();
+        }
+
+
+    }
+
+    public void PlaySpecialSound()
+    {
+        if (!soundSourceSpecial.isPlaying)
+        {
+            soundSourceSpecial.clip = specialSound;
+            soundSourceSpecial.Play();
+        }
+
 
     }
 }

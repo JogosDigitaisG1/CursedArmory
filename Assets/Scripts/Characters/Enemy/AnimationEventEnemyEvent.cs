@@ -20,8 +20,16 @@ public class AnimationEventEnemyEvent : MonoBehaviour
         attackEnemyScript.StartAttackAnim();
     }
 
-    public void OnAttackStartFrame()
+    public void OnAttackStartFrame(int num)
     {
+        if(num == 1)
+        {
+            SoundManager.Instance.PlaySlashSound();
+        }else if(num == 2)
+        {
+            SoundManager.Instance.PlayStompSound();
+        }
+        
         attackEnemyScript.Attack(movementEnemyScript.GetEnemyLookDirection(), movementEnemyScript.getPlayerPos());
     }
 

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class ShopManagerScript : MonoBehaviour
 {
     public TMP_Text CoinUi;
-    public ShopItemSO[] shopItemSO;
+    private List<ShopItemClass> shopItemClassList;
     [SerializeField]
     private List<ShopTemplate> shopPanels;
     public GameObject itemTemplate;
@@ -15,9 +17,12 @@ public class ShopManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shopItemClassList = GameManager.Instance.shopItemClassList;
         shopPanels = new List<ShopTemplate>();
         CoinUi.text = "Gold:" + GameManager.Instance.GetGold();
         LoadPanels();
+
+
        // CheckPurchasable();
     }
 
@@ -29,25 +34,30 @@ public class ShopManagerScript : MonoBehaviour
 
     public void LoadPanels()
     {
-        for (int i = 0; i < shopItemSO.Length; i++)
+        for (int i = 0; i < shopItemClassList.Count; i++) 
         {
-            Debug.Log("load panel " + i);
-            var shopPanel = Instantiate(itemTemplate, new Vector3(0, 0, 0), Quaternion.identity);
-            shopPanel.transform.SetParent(contents.transform, false);
 
-            shopPanel.GetComponent<ShopTemplate>().titleTxt.text = shopItemSO[i].title;
-            shopPanel.GetComponent<ShopTemplate>().descriptionTxt.text = shopItemSO[i].description;
-            shopPanel.GetComponent<ShopTemplate>().effectTxt.text = shopItemSO[i].effectDescription;
-            shopPanel.GetComponent<ShopTemplate>().costTxt.text = "Gold: " + shopItemSO[i].cost.ToString();
-            shopPanel.GetComponent<ShopTemplate>().shopItemSO = shopItemSO[i];
+            if (shopItemClassList[i].isAvailable)
+            {
+                var shopPanel = Instantiate(itemTemplate, new Vector3(0, 0, 0), Quaternion.identity);
+                shopPanel.transform.SetParent(contents.transform, false);
 
-            int index = i; // Capture the current value of i
-            shopPanel.GetComponent<ShopTemplate>().buyButton.onClick.RemoveAllListeners();
-            shopPanel.GetComponent<ShopTemplate>().buyButton.onClick.AddListener(() => BuyItem(index));
+                shopPanel.GetComponent<ShopTemplate>().titleTxt.text = shopItemClassList[i].shopItemSO.title;
+                shopPanel.GetComponent<ShopTemplate>().descriptionTxt.text = shopItemClassList[i].shopItemSO.description;
+                shopPanel.GetComponent<ShopTemplate>().effectTxt.text = shopItemClassList[i].shopItemSO.effectDescription;
+                shopPanel.GetComponent<ShopTemplate>().costTxt.text = "Gold: " + shopItemClassList[i].shopItemSO.cost.ToString();
+                shopPanel.GetComponent<ShopTemplate>().shopItemSO = shopItemClassList[i].shopItemSO;
 
-            shopPanels.Add(shopPanel.GetComponent<ShopTemplate>());
+                int index = i; // Capture the current value of i
+                shopPanel.GetComponent<ShopTemplate>().buyButton.onClick.RemoveAllListeners();
+                shopPanel.GetComponent<ShopTemplate>().buyButton.onClick.AddListener(() => BuyItem(index));
 
-            shopPanel.SetActive(true);
+                shopPanels.Add(shopPanel.GetComponent<ShopTemplate>());
+
+                shopPanel.SetActive(true);
+
+            }
+
         }
     }
 
@@ -71,6 +81,16 @@ public class ShopManagerScript : MonoBehaviour
             GameManager.Instance.DecreaseGold(shopPanels[num].shopItemSO.cost);
             GameManager.Instance.GetUpgrades(shopPanels[num].shopItemSO.effects);
             shopPanels[num].gameObject.SetActive(false);
+
+
+            foreach (var item in GameManager.Instance.shopItemClassList)
+            {
+                if (item.shopItemSO == shopPanels[num].shopItemSO)
+                {
+                    item.isAvailable = false;
+                }
+            }
+
             CheckPurchasable();
             CoinUi.text = "Gold:" + GameManager.Instance.GetGold();
         }

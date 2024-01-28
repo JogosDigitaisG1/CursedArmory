@@ -27,24 +27,28 @@ public class BasicAttack : MonoBehaviour, IPlayerAttack
 
     public void PerformAttackDown()
     {
+        SoundManager.Instance.PlaySlashSound();
         basicAttackColliderYBot.enabled = true;
         //basicAttackColliderYTop.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y * -1);
     }
 
     public void PerformAttackLeft()
     {
+        SoundManager.Instance.PlaySlashSound();
         basicAttackColliderX.enabled = true;
         basicAttackColliderX.transform.localPosition = new Vector3(XAttackOffset.x * -1, XAttackOffset.y);
     }
 
     public void PerformAttackRight()
     {
+        SoundManager.Instance.PlaySlashSound();
         basicAttackColliderX.enabled = true;
         basicAttackColliderX.transform.localPosition = XAttackOffset;
     }
 
     public void PerformAttackUp()
     {
+        SoundManager.Instance.PlaySlashSound();
         basicAttackColliderYTop.enabled = true;
         //basicAttackColliderYTop.transform.localPosition = new Vector3(YAttackOffset.x, YAttackOffset.y);
     }

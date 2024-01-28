@@ -21,6 +21,7 @@ public class SwordEnemyAttack : MonoBehaviour, IEnemyAttack
 
     public void PerformAttack(MovementEnemyScript.EnemyLookDirection lookDirection, Vector3 playerPos)
     {
+        SoundManager.Instance.PlaySlashSound();
         Attack(lookDirection);
     }
 

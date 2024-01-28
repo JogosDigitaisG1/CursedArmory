@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
+
+
 
 public class HealthScript : MonoBehaviour
 {
@@ -41,6 +39,7 @@ public class HealthScript : MonoBehaviour
         if (characterStatsScript != null && canTakeDamage)
         {
             StartBlinking(.5f, .1f, spriteRenderer);
+            SoundManager.Instance.PlayDamageSound();
             foreach (var effect in attackEffects)
             {
                 switch (effect)

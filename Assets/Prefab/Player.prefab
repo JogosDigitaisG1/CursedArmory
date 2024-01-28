@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4863932555282005670}
   - component: {fileID: 7241382737068562050}
   m_Layer: 6
-  m_Name: SlashAttackColliderX
+  m_Name: SpecialAttackColliderX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,8 +681,6 @@ GameObject:
   - component: {fileID: 2175898743425731753}
   - component: {fileID: 3918572910864769339}
   - component: {fileID: 463177317993264241}
-  - component: {fileID: -4862931608351328026}
-  - component: {fileID: -400191635997054645}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -935,7 +933,7 @@ GameObject:
   - component: {fileID: 6113918978143205964}
   - component: {fileID: 3979084214682759223}
   m_Layer: 6
-  m_Name: SlashAttackColliderY
+  m_Name: SpecialAttackColliderY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

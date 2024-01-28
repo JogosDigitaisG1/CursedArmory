@@ -68,9 +68,10 @@ public class AttackScript : MonoBehaviour
             IPlayerAttack attack = attackTypeList[index].attackTypeGameObject.GetComponent<IPlayerAttack>();
             if (activate)
             {
-                SoundManager.Instance.PlayPowerupSound();
+                
                 if (!activeAttacks.Contains(attack))
                 {
+                    SoundManager.Instance.PlayPowerupSound();
                     activeAttacks.Add(attack);
                     attackTypeList[index].attackTypeGameObject.SetActive(true);
                 }
